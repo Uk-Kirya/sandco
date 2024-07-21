@@ -1,5 +1,5 @@
 # Sandco
-### WEbsite from Sandco company
+### Website from Sandco company
 
 **App info**
 
