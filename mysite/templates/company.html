@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Компания — Sandco.kz
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Компания</h1>
+                        <ul>
+                            <li><a href="/">Главная</a> /</li>
+                            <li>Компания</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="row company_categories">
+                <div class="col-md-6 mb-4">
+                    <a href="{% url 'catalog:origins' %}">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <div>
+                                    Истоки
+                                </div>
+                                <picture>
+                                    <img src="{% static 'img/origins_bg.webp' %}" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <a href="{% url 'catalog:about-product' %}">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <div>
+                                    О продукте
+                                </div>
+                                <picture>
+                                    <img src="{% static 'img/about_product_bg.webp' %}" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <a href="{% url 'catalog:projects' %}">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <div>
+                                    Проекты
+                                </div>
+                                <picture>
+                                    <img src="{% static 'img/projects_bg.webp' %}" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <a href="{% url 'catalog:team' %}">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <div>
+                                    Команда
+                                </div>
+                                <picture>
+                                    <img src="{% static 'img/team_bg.webp' %}" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

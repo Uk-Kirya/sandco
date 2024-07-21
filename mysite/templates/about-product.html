@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    О продукте — Sandco.kz
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>О продукте</h1>
+                        <ul>
+                            <li><a href="/">Главная</a> /</li>
+                            <li><a href="{% url 'catalog:company' %}">Компания</a> /</li>
+                            <li>О продукте</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="company_tabs">
+                            <li><a href="{% url 'catalog:origins' %}">Истоки</a></li>
+                            <li class="active"><a href="{{ request.path }}">О продукте</a></li>
+                            <li><a href="{% url 'catalog:projects' %}">Проекты</a></li>
+                            <li><a href="{% url 'catalog:team' %}">Команда</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row about_product_block_1">
+                    <div class="col-lg-6 mb-4">
+                        <h2>Фракционированный кварцпесок</h2>
+                        <span class="text_1">от SandCo</span>
+                    </div>
+                    {% for item in structure %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="about_product_block_1_1">
+                                <picture>
+                                    <img src="{{ item.icon.url }}" alt="">
+                                </picture>
+                                <p><strong>{{ item.title }}</strong></p>
+                                <p>{{ item.text }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% if products %}
+            <div class="container-fluid about_product_block_2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2>Виды песка</h2>
+                        </div>
+                        {% for product in products %}
+                            <div class="col-md-6 col-lg-3">
+                                <div class="product_card">
+                                    <a href="{% url 'catalog:product-details' slug=product.slug %}">
+                                        <div class="ratio ratio-16x9">
+                                            <div>
+                                                <picture>
+                                                    <img src="{{ product.image.url }}" alt="">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div>
+                                        <a href="{% url 'catalog:product-details' slug=product.slug %}">{{ product.title }}</a>
+                                        <p>{{ product.type }}</p>
+                                        <button onclick="window.location.href = '{% url 'catalog:product-details' slug=product.slug %}';">подробнее</button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="container about_product_block_3">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Как получается фракционированный кварцевый песок?</h2>
+                </div>
+                <div class="col-12">
+                    {% for step in steps %}
+                        <div class="step_block">
+                            <div class="row align-items-center">
+                                <div class="col-1">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="col-10 offset-1 offset-lg-1 col-lg-4">
+                                    <div class="ratio ratio-16x9">
+                                        <div>
+                                            <picture>
+                                                <img src="{{ step.image.url }}" alt="">
+                                            </picture>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-10 col-lg-5 offset-2 offset-lg-1">
+                                    <p>{{ step.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="about_product_block_3_1">
+                        <div>
+                            <picture>
+                                <img src="{% static 'img/info.svg' %}" alt="">
+                            </picture>
+                        </div>
+                        <div>
+                            <p>Процесс не оказывает вредных воздействий на окружающую среду, так как технология производства обогащенного
+                            песка с помощью магнитной сепарации, отвечающая европейским стандартам, и использование печей сушки,
+                            работающих на электричестве, не приводит к выбросу загрязняющих веществ в атмосферу.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Команда — Sandco.kz
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Команда</h1>
+                        <ul>
+                            <li><a href="/">Главная</a> /</li>
+                            <li><a href="{% url 'catalog:company' %}">Компания</a> /</li>
+                            <li>Команда</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="company_tabs">
+                            <li><a href="{% url 'catalog:origins' %}">Истоки</a></li>
+                            <li><a href="{% url 'catalog:about-product' %}">О продукте</a></li>
+                            <li><a href="{% url 'catalog:projects' %}">Проекты</a></li>
+                            <li class="active"><a href="{{ request.path }}">Команда</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5">
+            <div class="row team_inner">
+                <div class="col text-lg-center">
+                    <div class="team_text_1" style="margin-top:0;">
+                        <p>Основатель компании Жуманалин Сакен Каримбекович посвятил всю жизнь развитию кокшетауского производства, где долгое время собирал команду верных своему делу специалистов. Все это время SandCo приносит пользу родному городу и работает по всему Казахстану благодаря простым, но очень важным ценностям – ответственность, честность, принципиальность и умение работать в команде. Именно это помогает создавать то, что будет работать не один десяток лет. Как и 25 лет назад именно таких людей мы ценим. Присоединяйтесь к нам, если вы разделяете наши принципы.</p>
+                    </div>
+                    <div class="row team_block_2 align-items-center text-start p-4 p-lg-0">
+                        <div class="col-lg-7">
+                            <picture>
+                                <img src="{% static 'img/team_bg.webp' %}" alt="" style="border-radius:1rem;">
+                            </picture>
+                        </div>
+                        <div class="col-lg-5 mt-4 mt-lg-0">
+                            <div>
+                                <p class="fs-5">В SandCo действует коллективный договор, который закрепляет льготы для работников: премии и льготные программы, возможность бесплатного обучения в компании. Льготные условия распространяются на всех сотрудников, включая тех, кто пришел после утверждения условий коллективного договора SandCo.</p><br>
+                                <a href="https://hh.kz/employer/10869039?hhtmFrom=vacancy" class="application fs-4" target="_blank">Смотреть вакансии</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

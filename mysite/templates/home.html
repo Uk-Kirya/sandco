@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Sandco.kz — Главная
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid block_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Крупнейшее производство фракционированного кварцевого песка в Казахстане</h1>
+                        <p>Реализуем проекты во всему Казахстану и в странах ближнего зарубежья. Находим лучшие решения
+                            под каждый запрос и обеспечиваем высокое качество.</p>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container-fluid block_2">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <iframe src="https://www.youtube.com/embed/kwHPPn2JhEc?si=ccAJnrtDHVOiVWag" title="SandCo company About" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 mt-4 mt-lg-0">
+                        <span>раньше «Намыс»</span>
+                        <h2>SandCo</h2>
+                        <p>Специализируется на производстве и поставке высококачественного фракционированного кварцевого песка.</p>
+                        <p>SANDCO основана в 1999 году в Кокшетау, производство ведется на базе месторождения Карьерное
+                            (СКО). Также в состав компании входит технологическая линия, техническая лаборатория,
+                            комплекс ж/д путей и другие структуры, способствующие реализации комплексного подхода.</p>
+                        <button onclick="window.location.href = '{% url 'catalog:company' %}';">Больше о компании</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col numbers">
+                        {% for number in numbers %}
+                        <div>
+                            <b>{{ number.number }}</b>
+                            {{ number.text }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container block_3">
+            <div class="row align-items-center">
+                <div class="col-lg-8 text-center text-lg-start">
+                    <h2>Сотрудничаем с ведущими компаниями</h2>
+                </div>
+                <div class="d-none d-lg-block col-4 text-lg-end">
+                    <button onclick="window.location.href = '{% url 'catalog:projects' %}';">все проекты</button>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col logos_main">
+                    {% for logo in logos %}
+                        {% if logo.link %}
+                        <a href="{{ logo.link }}" target="_blank">
+                            <div class="ratio-1x1 ratio">
+                                <div>
+                                    <picture>
+                                        <img src="{{ logo.image.url }}" alt="">
+                                    </picture>
+                                </div>
+                            </div>
+                        </a>
+                        {% else %}
+                            <div class="ratio-1x1 ratio">
+                                <div>
+                                    <picture>
+                                        <img src="{{ logo.image.url }}" alt="">
+                                    </picture>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-lg-none col text-center mt-3 mb-4">
+                    <button onclick="window.location.href = '{% url 'catalog:projects' %}';">все проекты</button>
+                </div>
+            </div>
+            {% if projects %}<hr>{% endif %}
+        </div>
+        {% if projects %}
+            <div class="container block_4">
+                <div class="row">
+                    <div class="col-12 text-center text-sm-start">
+                        <h2>Портфолио проектов</h2>
+                    </div>
+                    <div class="col-12 mt-5 mt-sm-0">
+                        <div class="owl-carousel owl-theme carousel_1">
+                            {% for project in projects %}
+                                <div class="item">
+                                    <div class="card_1">
+                                        <picture>
+                                            <img src="{{ project.image.url }}" alt="">
+                                        </picture>
+                                        <a href="{% url 'catalog:project-details' slug=project.slug %}" class="more">
+                                            <picture>
+                                                <img src="{% static 'img/more_1.svg' %}" alt="">
+                                            </picture>
+                                        </a>
+                                        <div class="card_text">
+                                            <span>{{ project.date }}</span>
+                                            <a href="{% url 'catalog:project-details' slug=project.slug %}">{{ project.title }}</a>
+                                            <p>{{ project.announcement }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="container-fluid block_5">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h2>СЭКОНОМЬТЕ СРЕДСТВА</h2>
+                        <h3>на поиске поставщика-производителя</h3>
+                        <p>Мы сами производим, обогащаем и готовим к поставке сырье без помощи посредников. От этого
+                            наши цены свободны от наценок, и благодаря комплексному подходу нашей компании вы экономите
+                            еще и время.</p>
+                        <button data-bs-toggle="modal" data-bs-target="#application">Начнем сотрудничество</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if spheres %}
+            <div class="container block_4">
+                <div class="row">
+                    <div class="col-12 text-center text-sm-start">
+                        <h2>Сферы применения</h2>
+                    </div>
+                    <div class="col-12 mt-5 mt-sm-0">
+                        <div class="owl-carousel owl-theme carousel_1">
+                            {% for sphere in spheres %}
+                                <div class="item">
+                                    <div class="card_2">
+                                        <a href="{{ sphere.link }}">
+                                            <picture>
+                                                <img src="{{ sphere.image.url }}" alt="">
+                                            </picture>
+                                        </a>
+                                        <a href="{{ sphere.link }}" class="more">
+                                            <picture>
+                                                <img src="{% static 'img/more_2.svg' %}" alt="">
+                                            </picture>
+                                        </a>
+                                        <div class="card_text">
+                                            <a href="{{ sphere.link }}">{{ sphere.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        {% endif %}
+        <div class="container block_6">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Почему мы?</h2>
+                </div>
+                {% for benefit in benefits %}
+                    <div class="col-6 col-lg-3">
+                        <div>
+                            <picture>
+                                <img src="{{ benefit.icon.url }}" alt="">
+                            </picture>
+                        </div>
+                        <div>
+                            <p>{{ benefit.text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container-fluid block_7">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <picture>
+                            <img src="{% static 'img/team_bg.webp' %}" alt="">
+                        </picture>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="about_text">
+                            <h2>Больше, чем просто работа</h2>
+                            <p>Наша команда – опытные специалисты, умеющие работать в команде. Присоединяйтесь и вы!</p>
+                            <p>Мы предлагаем вакансии во многих направлениях и предоставляем возможности карьерного роста, полного социального
+                                обеспечения
+                                и удобных для вас форматов работы.</p>
+                            <button onclick="window.location.href = '{% url 'catalog:team' %}';">Узнать о вакансиях</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if news %}
+            <div class="container block_3 mb-md-4">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 text-center text-sm-start">
+                        <h2>Новости компании</h2>
+                    </div>
+                    <div class="d-none d-lg-block col-4 text-lg-end">
+                        <button onclick="window.location.href = '{% url 'catalog:news' %}';">все новости</button>
+                    </div>
+                </div>
+                <div class="row mt-3 news_main">
+                    <div class="col-12 mt-3">
+                        <div class="owl-carousel owl-theme carousel_2">
+                            {% for new in news %}
+                                <div class="item">
+                                    <div class="card_1">
+                                        <picture>
+                                            <img src="{{ new.image.url }}" alt="">
+                                        </picture>
+                                        <a href="{% url 'catalog:news-details' slug=new.slug %}" class="more">
+                                            <picture>
+                                                <img src="{% static 'img/more_1.svg' %}" alt="">
+                                            </picture>
+                                        </a>
+                                        <div class="card_text">
+                                            <span>{{ new.date }}</span>
+                                            <a href="{% url 'catalog:news-details' slug=new.slug %}">{{ new.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="d-lg-none col text-center mt-2 mb-4">
+                        <button onclick="window.location.href = '{% url 'catalog:news' %}';">все новости</button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}

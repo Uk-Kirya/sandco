@@ -1,0 +1,68 @@
+{% load static %}
+
+<header class="nav-down">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="h_1">
+                    <a href="/">
+                        <picture>
+                            <img src="{% static 'img/logo.svg' %}" alt="">
+                        </picture>
+                    </a>
+                </div>
+                <div class="h_2">
+                    <button class="d-none d-md-flex catalog {% if request.path == '/library/' %} active_catalog {% endif %}" onclick="window.location.href = '{% url 'catalog:library' %}';">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8.75 4.7478L18.25 4.75255M8.75 10L18.25 10.0047M8.75 15.25H18.25M1.75 4.7478L4.25 4.74948M1.75 10L4.25 10.0017M1.75 15.25H4.25"
+                                stroke="#131313" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        Библиотека
+                    </button>
+                    <ul class="menu d-none d-xl-flex">
+                        <li>
+                            <a href="{% url 'catalog:company' %}" {% if request.path == '/company/' %} class="active" {% endif %}>
+                                Компания
+                                <picture>
+                                    <img src="{% static 'img/arrow_down.svg' %}" alt="">
+                                </picture>
+                            </a>
+                            <ul>
+                                <li><a href="{% url 'catalog:origins' %}" {% if request.path == '/company/origins/' %} class="active" {% endif %}>Истоки</a></li>
+                                <li><a href="{% url 'catalog:about-product' %}" {% if request.path == '/company/about-product/' %} class="active" {% endif %}>О продукте</a></li>
+                                <li><a href="{% url 'catalog:projects' %}" {% if request.path == '/company/projects/' %} class="active" {% endif %}>Проекты</a></li>
+                                <li><a href="{% url 'catalog:team' %}" {% if request.path == '/company/team/' %} class="active" {% endif %}>Команда</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'catalog:news' %}" {% if request.path == '/news/' %} class="active" {% endif %}>Новости</a></li>
+                        <li><a href="{% url 'catalog:contacts' %}" {% if request.path == '/contacts/' %} class="active" {% endif %}>Контакты</a></li>
+                    </ul>
+                    <button class="application" data-bs-toggle="modal" data-bs-target="#application">
+                        Сделать заказ
+                    </button>
+                    <!--
+                    <div class="dropdown d-none d-xl-block">
+                        <button class="language" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                            Ру
+                            <picture>
+                                <img src="{% static 'img/arrow_down.svg' %}" alt="">
+                            </picture>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Ру</a></li>
+                            <li><a class="dropdown-item" href="#">En</a></li>
+                            <li><a class="dropdown-item" href="#">Кз</a></li>
+                        </ul>
+                    </div>
+                    -->
+                    <picture class="d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#menu">
+                        <img src="{% static 'img/menu_hamburger.svg' %}" alt="">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

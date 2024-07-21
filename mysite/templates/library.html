@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Библиотека — Sandco.kz
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Библиотека</h1>
+                        <ul>
+                            <li><a href="/">Главная</a> / </li>
+                            <li>Библиотека</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container-fluid inner_block_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Основные направления</h2>
+                    </div>
+                    {% if categories %}
+                        {% for category in categories %}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card_2">
+                                    <a href="{% url 'catalog:library-details' slug=category.slug %}">
+                                        <picture>
+                                            <img src="{{ category.image.url }}" alt="">
+                                        </picture>
+                                    </a>
+                                    <a href="{% url 'catalog:library-details' slug=category.slug %}" class="more">
+                                        <picture>
+                                            <img src="{% static 'img/more_2.svg' %}" alt="">
+                                        </picture>
+                                    </a>
+                                    <div class="card_text">
+                                        <a href="{% url 'catalog:library-details' slug=category.slug %}">{{ category.title }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="mt-4">Упс... Категории отсутствуют</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid inner_block_3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Виды песка</h2>
+                    </div>
+                    {% if products %}
+                        {% for product in products %}
+                            <div class="col-md-6 col-lg-3">
+                                <div class="product_card">
+                                    <a href="{% url 'catalog:product-details' slug=product.slug %}">
+                                        <div class="ratio ratio-16x9">
+                                            <div>
+                                                <picture>
+                                                    <img src="{{ product.image.url }}" alt="">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div>
+                                        <a href="{% url 'catalog:product-details' slug=product.slug %}">{{ product.title }}</a>
+                                        <p>{{ product.type }}</p>
+                                        <button onclick="window.location.href = '{% url 'catalog:product-details' slug=product.slug %}';">подробнее</button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="mt-4">Упс... Товары отсутствуют</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

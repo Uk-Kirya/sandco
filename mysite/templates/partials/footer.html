@@ -1,0 +1,158 @@
+{% load static %}
+
+<footer class="mt-auto">
+    <div class="container-fluid block_8">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 offset-lg-1">
+                    <div class="row align-items-center">
+                        <div class="col-xl-4">
+                            <h2>Расскажите</h2>
+                            <h3>о своем проекте</h3>
+                            <p>А мы подберем для него правильное решение и поможем в реализации.</p>
+                        </div>
+                        <div class="col-xl-6 offset-xl-2 mt-5 mt-xl-0">
+                            <form action="{% url 'catalog:application' %}" method="post" class="needs-validation" novalidate>
+                                {% csrf_token %}
+                                <div class="row align-items-center">
+                                    <div class="col-sm-6">
+                                        <input type="text" name="name" placeholder="Имя" class="form-control" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="phone" placeholder="Телефон" class="phonee form-control" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="email" name="email" placeholder="E-mail" class="form-control" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="g-recaptcha" data-sitekey="6Lf4Aw0qAAAAAF6AfYQuGPC7b2CpaF-oFLuJO-by"></div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="submit" value="Отправить заявку" class="send">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="f_1">
+                        <a href="/">
+                            <picture>
+                                <img src="{% static 'img/logo_footer.svg' %}" alt="">
+                            </picture>
+                        </a>
+                        <div class="social_block mt-3">
+                            <a href="https://facebook.com/sandco.kz/" target="_blank">
+                                <picture>
+                                    <img src="{% static 'img/fb.svg' %}" alt="">
+                                </picture>
+                            </a>
+                            <a href="https://youtube.com/@sandco_kz/" target="_blank">
+                                <picture>
+                                    <img src="{% static 'img/you.svg' %}" alt="">
+                                </picture>
+                            </a>
+                            <a href="https://www.instagram.com/sandco.kz/" target="_blank">
+                                <picture>
+                                    <img src="{% static 'img/inst.svg' %}" alt="">
+                                </picture>
+                            </a>
+                            <a href="https://www.linkedin.com/company/sandco-kz/" target="_blank">
+                                <picture>
+                                    <img src="{% static 'img/linkedin.svg' %}" alt="">
+                                </picture>
+                            </a>
+                            <a href="https://x.com/sandco_kz" target="_blank">
+                                <picture>
+                                    <img src="{% static 'img/x.svg' %}" alt="">
+                                </picture>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="f_1">
+                        <ul>
+                            <li {% if request.path == '/library/' %} class="active" {% endif %}>
+                                <a href="{% url 'catalog:library' %}">Библиотека</a>
+                            </li>
+                            <li {% if request.path == '/company/' %} class="active" {% endif %}>
+                                <a href="{% url 'catalog:company' %}">Компания</a>
+                            </li>
+                            <li {% if request.path == '/news/' %} class="active" {% endif %}>
+                                <a href="{% url 'catalog:news' %}">Новости</a>
+                            </li>
+                            <li {% if request.path == '/contacts/' %} class="active" {% endif %}>
+                                <a href="{% url 'catalog:contacts' %}">Контакты</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="f_1">
+                        <div class="f_1_1">
+                            <div>
+                                <picture>
+                                    <img src="{% static 'img/phone.svg' %}" alt="">
+                                </picture>
+                            </div>
+                            <div>
+                                <span>Отдел продаж</span>
+                                <a href="tel:+77474109501">+7 (747) 410-95-01</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f_1">
+                        <div class="f_1_1">
+                            <div>
+                                <picture>
+                                    <img src="{% static 'img/location.svg' %}" alt="">
+                                </picture>
+                            </div>
+                            <div>
+                                <span>Адрес</span>
+                                <p>Кокшетау, Северная промзона, проезд 3, д. 62</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f_1">
+                        <div class="f_1_1">
+                            <div>
+                                <picture>
+                                    <img src="{% static 'img/email.svg' %}" alt="">
+                                </picture>
+                            </div>
+                            <div>
+                                <span>Наша почта</span>
+                                <a href="mailto:sand@sandco.kz">sand@sandco.kz</a>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href = '{% url 'catalog:library' %}';">
+                            <picture>
+                                <img src="{% static 'img/menu.svg' %}" alt="">
+                            </picture>
+                            Перейти в библиотеку
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row cpy">
+                <hr>
+                <div class="col-lg-4 text-center text-lg-start">
+                    © {% now "Y" %} Sandco
+                </div>
+                <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                    <a href="{% url 'catalog:policy' %}" {% if request.path == '/policy/' %} class="active" {% endif %}>
+                        Политика конфиденциальности
+                    </a>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                    <a href="https://losdesign.ru" target="_blank">Разработка сайта</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

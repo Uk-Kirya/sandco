@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ new.title }} — Sandco.kz
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{{ new.title }}</h1>
+                        <ul>
+                            <li><a href="/">Главная</a> /</li>
+                            <li><a href="{% url 'catalog:news' %}">Новости</a> /</li>
+                            <li>{{ new.title }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="container mb-5">
+                <div class="row">
+                    <div class="col-lg-6 project_photos">
+                        <script src="https://yastatic.net/share2/share.js"></script>
+                        <div class="ya-share2" data-curtain data-size="l" data-shape="round" data-limit="0"
+                            data-more-button-type="short"
+                            data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,whatsapp,moimir"></div>
+                        <div class="ratio ratio-16x9">
+                            <div>
+                                <picture>
+                                    <img src="{{ new.image.url }}" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 project_text new_inner_text">
+                        <span class="project_date">Дата публикации: {{ new.date }}</span>
+                        {{ new.text|safe }}
+                    </div>
+                </div>
+            </div>
+            {% if news.count > 1 %}
+                <div class="container block_4 mb-5">
+                    <hr class="line_1">
+                    <div class="row">
+                        <div class="col-12 text-center text-sm-start">
+                            <h2>Читайте также</h2>
+                        </div>
+                        <div class="col-12 mt-5 mt-sm-0">
+                            <div class="owl-carousel owl-theme carousel_1">
+                                {% for item in news %}
+                                    {% if item.slug != new.slug %}
+                                        <div class="item">
+                                            <div class="card_1">
+                                                <picture>
+                                                    <img src="{{ item.image.url }}" alt="">
+                                                </picture>
+                                                <a href="{% url 'catalog:news-details' slug=item.slug %}" class="more">
+                                                    <picture>
+                                                        <img src="{% static 'img/more_1.svg' %}" alt="">
+                                                    </picture>
+                                                </a>
+                                                <div class="card_text">
+                                                    <span>{{ item.date }}</span>
+                                                    <a href="{% url 'catalog:news-details' slug=item.slug %}">{{ item.title }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Проекты — Sandco.kz
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Проекты</h1>
+                        <ul>
+                            <li><a href="/">Главная</a> /</li>
+                            <li><a href="{% url 'catalog:company' %}">Компания</a> /</li>
+                            <li>Проекты</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="company_tabs">
+                            <li><a href="{% url 'catalog:origins' %}">Истоки</a></li>
+                            <li><a href="{% url 'catalog:about-product' %}">О продукте</a></li>
+                            <li class="active"><a href="{{ request.path }}">Проекты</a></li>
+                            <li><a href="{% url 'catalog:team' %}">Команда</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                {% if projects  %}
+                    {% for project in projects %}
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card_1">
+                                <picture>
+                                    <img src="{{ project.image.url }}" alt="">
+                                </picture>
+                                <a href="{% url 'catalog:project-details' slug=project.slug %}" class="more">
+                                    <picture>
+                                        <img src="{% static 'img/more_1.svg' %}" alt="">
+                                    </picture>
+                                </a>
+                                <div class="card_text">
+                                    <span>{{ project.date }}</span>
+                                    <a href="{% url 'catalog:project-details' slug=project.slug %}">{{ project.title }}</a>
+                                    <p>{{ project.announcement }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-center d-flex flex-column fs-4">
+                        <picture>
+                            <img src="{% static 'img/writing.svg' %}" alt="">
+                        </picture><br>
+                        Сейчас мы собираем интересную информацию о реализованных нами проектах!
+                    </p>
+                    <p class="text-center">Пожалуйста, зайдите позже ...</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

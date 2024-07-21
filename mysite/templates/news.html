@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Новости — Sandco.kz
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Новости</h1>
+                        <ul>
+                            <li><a href="/">Главная</a> /</li>
+                            <li>Новости</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                {% if news %}
+                    {% for item in news %}
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card_1">
+                                <picture>
+                                    <img src="{{ item.image.url }}" alt="">
+                                </picture>
+                                <a href="{% url 'catalog:news-details' slug=item.slug %}" class="more">
+                                    <picture>
+                                        <img src="{% static 'img/more_1.svg' %}" alt="">
+                                    </picture>
+                                </a>
+                                <div class="card_text">
+                                    <span>{{ item.date }}</span>
+                                    <a href="{% url 'catalog:news-details' slug=item.slug %}">{{ item.title }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-center d-flex flex-column fs-4">
+                        <picture>
+                            <img src="{% static 'img/writing.svg' %}" alt="">
+                        </picture><br>
+                        В данный момент наши редакторы пишут интересные новости для вас!
+                    </p>
+                    <p class="text-center">Пожалуйста, зайдите позже ...</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
