@@ -1,0 +1,2473 @@
+@font-face {
+    font-family: 'Aeroport-Regular';
+    src: url('../fonts/Aeroportregulartrial.eot');
+    src: url('../fonts/Aeroportregulartrial.eot') format('embedded-opentype'),
+        url('../fonts/Aeroportregulartrial.woff2') format('woff2'),
+        url('../fonts/Aeroportregulartrial.woff') format('woff'),
+        url('../fonts/Aeroportregulartrial.ttf') format('truetype'),
+        url('../fonts/Aeroportregulartrial.svg#Aeroportregulartrial') format('svg');
+}
+
+@font-face {
+    font-family: 'Aeroport-Medium';
+    src: url('../fonts/AeroportMedium.eot');
+    src: url('../fonts/AeroportMedium.eot') format('embedded-opentype'),
+        url('../fonts/AeroportMedium.woff2') format('woff2'),
+        url('../fonts/AeroportMedium.woff') format('woff'),
+        url('../fonts/AeroportMedium.ttf') format('truetype'),
+        url('../fonts/AeroportMedium.svg#AeroportMedium') format('svg');
+}
+
+@font-face {
+    font-family: 'Aeroport-Light';
+    src: url('../fonts/AeroportLight.eot');
+    src: url('../fonts/AeroportLight.eot') format('embedded-opentype'),
+        url('../fonts/AeroportLight.woff2') format('woff2'),
+        url('../fonts/AeroportLight.woff') format('woff'),
+        url('../fonts/AeroportLight.ttf') format('truetype'),
+        url('../fonts/AeroportLight.svg#AeroportLight') format('svg');
+}
+
+@font-face {
+    font-family: 'Aeroport-Bold';
+    src: url('../fonts/AeroportBold.eot');
+    src: url('../fonts/AeroportBold.eot') format('embedded-opentype'),
+        url('../fonts/AeroportBold.woff2') format('woff2'),
+        url('../fonts/AeroportBold.woff') format('woff'),
+        url('../fonts/AeroportBold.ttf') format('truetype'),
+        url('../fonts/AeroportBold.svg#AeroportBold') format('svg');
+}
+
+@font-face {
+    font-family: 'Aeroport-Black';
+    src: url('../fonts/AeroportBlack.eot');
+    src: url('../fonts/AeroportBlack.eot') format('embedded-opentype'),
+        url('../fonts/AeroportBlack.woff2') format('woff2'),
+        url('../fonts/AeroportBlack.woff') format('woff'),
+        url('../fonts/AeroportBlack.ttf') format('truetype'),
+        url('../fonts/AeroportBlack.svg#AeroportBlack') format('svg');
+}
+
+body {
+    font-family: 'Aeroport-Regular', sans-serif !important;
+}
+
+select,
+button,
+a,
+input,
+textarea,
+img {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong {
+    font-family: 'Aeroport-Medium', sans-serif !important;
+}
+
+a,
+button {
+    text-decoration: none !important;
+    transition: .3s all !important;
+}
+
+img {
+    max-width: 100% !important;
+    border: 0 !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.nav-up {
+    top: -200px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    transition: .3s;
+    width: 100%;
+    z-index: 99;
+}
+
+header .container {
+    background: #fff;
+    border-radius: 0 0 1.5rem 1.5rem;
+}
+
+header .container .col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+.h_2 {
+    display: flex;
+    align-items: start;
+    align-items: center;
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none !important;
+    margin: 0 2.3rem;
+}
+
+.menu a {
+    color: #131313;
+    font-size: 1rem;
+}
+
+.menu li {
+    margin: 0 2.3rem;
+}
+
+.menu a:hover {
+    color: #054996;
+}
+
+.menu ul {
+    display: none;
+    margin: 0 !important;
+    padding: .5rem 0 0 0;
+}
+
+.menu ul li {
+    margin: 0;
+    list-style: none;
+    padding: .5rem 1rem;
+    background: #f9f9f9;
+}
+
+.menu ul li:first-child {
+    border-radius: 1rem 1rem 0 0;
+    padding-top: 1rem;
+}
+
+.menu ul li:last-child {
+    border-radius: 0 0 1rem 1rem;
+    padding-bottom: 1rem;
+}
+
+.menu li:hover ul {
+    position: absolute;
+    display: block;
+}
+
+.menu img {
+    margin-left: .5rem;
+    transition: .3s all;
+}
+
+.menu li:hover img {
+    transform: rotate(180deg);
+}
+
+.catalog {
+    font-size: 1rem;
+    color: #131313;
+    padding: 1rem 1.5rem;
+    border-radius: 3rem;
+    background: transparent;
+    border: 1px solid rgba(19, 19, 19, .3);
+    align-items: center;
+}
+
+.catalog svg {
+    margin-right: .5rem;
+}
+
+.catalog:hover {
+    border-color: #131313;
+}
+
+.active_catalog {
+    background: #054996;
+    color: #fff;
+}
+
+.active_catalog path {
+    stroke: #fff;
+}
+
+.application {
+    padding: 1rem 1.5rem;
+    border-radius: 3rem;
+    font-size: 1rem;
+    color: #fff !important;
+    background: #054996;
+    border: none;
+    margin-right: 1.5rem;
+}
+
+.application:hover {
+    background: #9BC332;
+}
+
+.language {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    color: #131313;
+}
+
+.language:hover {
+    color: #054996;
+}
+
+.language img {
+    margin-left: .2rem;
+    transition: .3s all;
+}
+
+.language:hover img {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    font-size: 12px !important;
+    min-width: auto !important;
+    margin: .5rem 0 0 -.5rem !important;
+}
+
+.close {
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
+}
+
+.offcanvas ul {
+    margin: 1.5rem;
+    padding: 0;
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+.offcanvas li {
+    margin-bottom: .75rem;
+}
+
+.offcanvas ul a {
+    color: #131313;
+}
+
+.offcanvas ul ul {
+    font-size: 1.2rem;
+    margin-left: 0;
+    padding-left: 1.5rem;
+    border-left: 3px solid #e1e1e1;
+}
+
+.offcanvas .catalog {
+    font-size: 1.5rem;
+}
+
+.block_1 {
+    position: relative;
+    color: #fff;
+}
+
+.block_1::after {
+    content: '';
+    width: 100%;
+    height: 3.75rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #f1f1f1;
+    z-index: 9;
+    border-radius: 3.75rem 3.75rem 0 0;
+}
+
+.block_1 h1 {
+    margin-top: 393px;
+    font-size: 3rem;
+    max-width: 966px;
+    text-transform: uppercase;
+    font-family: 'Aeroport-Bold', sans-serif !important;
+}
+
+.block_1 p {
+    font-size: 20px;
+    margin: 2rem 0 6.75rem 0;
+    max-width: 854px;
+}
+
+.block_1 picture {
+    position: absolute;
+    width: 100%;
+    height: 765px;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.block_1 picture::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
+    opacity: .75;
+}
+
+.block_1 picture::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(198deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
+    opacity: .75;
+}
+
+.block_1 picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.block_2 {
+    background: #f1f1f1;
+    position: relative;
+    padding-bottom: 7.5rem;
+}
+
+.block_2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3.75rem;
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 3.75rem 3.75rem 0 0;
+    background: #fff;
+}
+
+.block_2 iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+}
+
+.block_2 span,
+.block_2 p,
+.block_2 h2,
+.block_2 button {
+    margin-left: 43px !important;
+    color: #131313;
+}
+
+.block_2 span {
+    font-size: 1rem;
+}
+
+.block_2 h2 {
+    font-size: 3rem;
+    font-family: 'Aeroport-Medium' !important;
+}
+
+.block_2 p {
+    font-size: 20px;
+    margin: 1rem 0 0 0;
+}
+
+.block_2 button {
+    color: #fff;
+    padding: 1.2rem 2rem;
+    border-radius: 3rem;
+    font-size: 1rem;
+    background: #054996;
+    border: 0;
+    margin-top: 1.2rem;
+}
+
+.block_2 button:hover {
+    background: #9BC332;
+}
+
+.offcanvas .dropdown {
+    margin: 1.5rem;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: .375rem;
+}
+
+.offcanvas .dropdown button {
+    font-size: 1rem;
+}
+
+.offcanvas .dropdown-menu {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0 !important;
+    margin-left: -16px !important;
+}
+
+.offcanvas .dropdown-menu li {
+    margin: .375rem !important;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.numbers {
+    color: #131313;
+    display: inline-flex;
+    justify-content: space-between;
+    margin-top: 3.75rem !important;
+}
+
+.numbers div {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    padding: 1rem 0 0 0;
+    background: url(../img/oval.svg) top left no-repeat;
+}
+
+.numbers div b {
+    font-size: 5rem;
+    font-weight: normal !important;
+    line-height: 100%;
+    font-family: 'Aeroport-Light', sans-serif !important;
+}
+
+.block_3 {
+    color: #131313;
+}
+
+.block_3 hr,
+.line_1 {
+    opacity: 1 !important;
+    background: rgba(13,13,13,.1);
+    margin-top: 1.5rem;
+}
+
+.line_1 {
+    margin-bottom: 3rem;
+}
+
+.block_3 h2 {
+    font-size: 2rem;
+    font-family: 'Aeroport-Medium', sans-serif !important;
+}
+
+.block_3 button {
+    padding: 1rem 1.5rem;
+    border-radius: 3rem;
+    background: transparent;
+    border: 1px solid rgba(19,19,19,.1);
+    color: #131313;
+    font-size: 15px;
+}
+
+.block_3 button:hover {
+    background: #054996;
+    color: #fff;
+}
+
+.logos_main {
+	display: flex;
+}
+
+.block_3 .ratio {
+    margin: 1.5rem 1.5rem 0 0;
+    width: 5.375rem;
+}
+
+.block_3 .ratio div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,.07);
+}
+
+.block_3 .ratio div img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 3.5rem !important;
+    max-height: 3.5rem !important;
+}
+
+.block_3 .row:nth-child(2n) {
+    display: flex;
+    flex-wrap: nowrap;
+    width: auto;
+    padding-bottom: 35px;
+    overflow-x: scroll;
+}
+
+.block_4 {
+    margin-top: 3.75rem;
+    color: #131313;
+}
+
+.block_4_2 {
+    margin-top: 0;
+}
+
+.block_4 h2 {
+    font-size: 2rem;
+    font-family: 'Aeroport-Medium', sans-serif !important;
+}
+
+.block_4 h2 span {
+    color: #999;
+}
+
+.owl-theme {
+    position: relative;
+}
+
+.carousel_1,
+.carousel_3 {
+    margin-top: 2rem;
+}
+
+.card_1 {
+    height: 260px;
+    position: relative;
+    display: flex;
+    align-items: end;
+}
+
+.card_1 picture {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.card_1 picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.card_1 .more {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    transition: .3s all;
+}
+
+.card_1 .more:hover {
+    transform: scale(1.1);
+}
+
+.card_1 .more picture {
+    position: relative;
+    width: auto !important;
+    height: auto !important;
+}
+
+.card_1 .more picture img {
+    object-fit: contain !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.card_1 .card_text {
+    background: #fff;
+    width: 75%;
+    padding: 1.5rem;
+    border-radius: 0 1.5rem 0 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card_1 .card_text::before {
+    content: '';
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../img/corner.svg) center no-repeat;
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+}
+
+.card_1 .card_text::after {
+    content: '';
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../img/corner.svg) center no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: -1.5rem;
+}
+
+.card_1 .card_text span {
+    font-size: .75rem;
+    margin-bottom: .25rem;
+}
+
+.card_1 .card_text a {
+    color: #131313;
+    font-size: 1.5rem;
+    font-family: 'Aeroport-Medium', sans-serif !important;
+}
+
+.card_1 .card_text a:hover {
+    color: #054996;
+}
+
+.card_1 .card_text p {
+    font-size: 1rem;
+    margin: .25rem 0 0 0;
+}
+
+.block_5 {
+    border-radius: 3.75rem;
+    background: url(../img/application_bg.webp) center no-repeat;
+    background-size: cover !important;
+    margin-top: 3.75rem;
+    color: white;
+    text-align: center;
+}
+
+.block_4 hr {
+    opacity: 1 !important;
+    background: rgba(13,13,13,.1);
+    margin-top: 2.25rem;
+}
+
+.block_5 .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+}
+
+.block_5 h2 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-family: 'Aeroport-Bold', sans-serif !important;
+    margin: 0;
+}
+
+.block_5 h3 {
+    font-size: 3rem;
+    font-family: 'Aeroport-Medium', sans-serif !important;
+}
+
+.block_5 p {
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 0 2rem 0;
+}
+
+.block_5 button {
+    font-size: 1rem;
+    color: #fff !important;
+    font-family: 'Aeroport-Medium', sans-serif;
+    background: #054996;
+    border: 0;
+    border-radius: 3rem;
+    padding: 1.3rem 2rem;
+}
+
+.block_5 button:hover {
+    background: #9BC332;
+}
+
+.card_2 {
+    position: relative;
+}
+
+.card_2 picture {
+    display: block;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 1.5rem;
+}
+
+.card_2 picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: .3s all;
+}
+
+.card_2 picture:hover img {
+    transform: scale(1.15);
+}
+
+.card_2 .more {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 0 1rem 1rem;
+    border-radius: 0 0 0 1.5rem;
+    background: white;
+}
+
+.card_2 .more picture {
+    width: auto;
+    height: auto;
+}
+
+.card_2 .more picture img {
+    object-fit: contain !important;
+    width: auto !important;
+    height: auto;
+}
+
+.card_2 .more::before {
+    content: '';
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../img/corner_reverse.svg) center no-repeat;
+    position: absolute;
+    top: 0;
+    left: -1.5rem;
+}
+
+.card_2 .more::after {
+    content: '';
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../img/corner_reverse.svg) center no-repeat;
+    position: absolute;
+    right: 0;
+    bottom: -1.5rem;
+}
+
+.card_2 .card_text {
+    padding: 1.5rem;
+    font-size: 20px;
+}
+
+.card_2 .card_text a {
+    color: #131313;
+    display: inline-block;
+    line-height: 130%;
+}
+
+.card_2 .card_text a:hover {
+    color: #054996;
+}
+
+.block_6 {
+    margin-top: 3.75rem;
+    color: #131313;
+}
+
+.block_6 h2 {
+    font-size: 2rem;
+    font-family: 'Aeroport-Medium', sans-serif;
+    margin-bottom: .5rem;
+}
+
+.block_6 .col-lg-3 {
+    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.block_6 .col-lg-3 picture {
+    display: block;
+    width: 86px !important;
+}
+
+.block_6 .col-lg-3 p {
+    font-size: 1rem;
+    margin: 0 0 0 .75rem;
+}
+
+.block_7 {
+    margin-top: 3.75rem;
+    padding-top: 3.75rem;
+    padding-bottom: 7.5rem;
+    background: #054996;
+    border-radius: 3.75rem 3.75rem 0 0;
+    position: relative;
+    color: #131313;
+}
+
+.block_7::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 3.75rem;
+    background: #fff;
+    border-radius: 3.75rem 3.75rem 0 0;
+    bottom: 0;
+    left: 0;
+}
+
+.block_7 img {
+    width: 100% !important;
+    border-radius: 1.5rem;
+}
+
+.block_7 .about_text {
+    background: #fff;
+    padding: 3rem 2rem;
+    border-radius: 1.5rem;
+    position: relative;
+    width: calc(100% + 110px);
+    margin-left: -110px;
+}
+
+.block_7 .about_text h2 {
+    font-size: 2rem;
+    font-family: 'Aeroport-Medium', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.block_7 .about_text p {
+    font-size: 20px;
+    margin: 0 0 1.5rem 0;
+}
+
+.block_7 .about_text button {
+    padding: 1.2rem 2rem;
+    border-radius: 3rem;
+    background: #054996;
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Aeroport-Medium', sans-serif;
+    border: 0;
+}
+
+.block_7 .about_text button:hover {
+    background: #9BC332;
+}
+
+.card_1 .card_text a {
+    font-size: 1rem;
+}
+
+.news_main {
+    overflow: visible !important;
+}
+
+.block_8 {
+    border-radius: 3.75rem 3.75rem 0 0;
+    padding-top: 3.75rem;
+    padding-bottom: 7.5rem;
+    background: url(../img/pattern.svg) left top 3.75rem no-repeat #333 !important;
+    color: #fff;
+    position: relative;
+}
+
+.block_8::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 3.75rem 3.75rem 0 0;
+    background: #131313;
+    bottom: 0;
+    left: 0;
+}
+
+.block_8 h2 {
+    font-size: 3.5rem;
+    font-family: 'Aeroport-Bold', sans-serif !important;
+    line-height: 90%;
+    display: block;
+}
+
+.block_8 h3 {
+    font-size: 2.25rem;
+    font-family: 'Aeroport-Bold', sans-serif !important;
+    line-height: 100%;
+    display: block;
+}
+
+.block_8 p {
+    font-size: 20px;
+    margin: 2rem 0 0 0;
+}
+
+.block_8 input,
+.block_8 select {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    border-radius: 3rem;
+    font-size: 1rem;
+    color: #fff !important;
+    background: transparent;
+    margin: .75rem 0;
+    border-color: rgba(255,255,255,.3);
+    transition: .3s all;
+}
+
+.block_8 input::placeholder {
+    color: #fff;
+}
+
+.block_8 select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: url(../img/down.svg) center right 1.5rem no-repeat;
+}
+
+.block_8 input:focus,
+.block_8 select:focus {
+    border-color: #fff;
+    background-color: transparent;
+}
+
+.send {
+    border: 0;
+    background: #9BC332 !important;
+    font-family: 'Aeroport-Medium', sans-serif;
+}
+
+.send:hover {
+    background: #054996 !important;
+}
+
+.block_8 .col-xl-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+footer .container-fluid {
+    background: #131313;
+    color: #fff;
+}
+
+footer a {
+    color: #fff;
+}
+
+footer a:hover {
+    color: #9BC332;
+}
+
+.cpy {
+    font-size: .75rem;
+    padding-bottom: 2rem;
+}
+
+.cpy hr {
+    margin-bottom: 2rem;
+    width: calc(100% - 1.5rem);
+    opacity: 1 !important;
+    background: #555;
+    margin: 2rem 0 2rem .75rem;
+}
+
+footer .col {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-family: 'Aeroport-Medium', sans-serif;
+}
+
+footer ul li {
+    margin-bottom: 1rem;
+}
+
+footer ul li:last-child {
+    margin-bottom: 0;
+}
+
+.f_1_1 {
+    display: flex;
+}
+
+.f_1_1 div img {
+    width: 40px !important;
+    margin-right: 1.5rem;
+}
+
+.f_1_1 div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.f_1_1 span {
+    color: #999;
+    font-size: .75rem;
+    font-family: 'Aeroport-Medium', sans-serif;
+}
+
+.f_1_1 p {
+    max-width: 200px;
+}
+
+.f_1 button {
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: 'Aeroport-Medium', sans-serif;
+    color: #131313;
+    display: flex;
+    align-items: center;
+    border-radius: 3rem;
+    border: 0;
+    margin-top: 1.7rem;
+}
+
+.f_1 button img {
+    margin-right: .5rem;
+}
+
+.f_1 button:hover {
+    background: #9BC332;
+}
+
+.inner_header {
+    padding-top: calc(90px + 3rem);
+    position: relative;
+    color: white;
+}
+
+.inner_header::after {
+    content: '';
+    width: 100%;
+    height: 3.75rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #f1f1f1;
+    z-index: 9;
+    border-radius: 3.75rem 3.75rem 0 0;
+}
+
+.inner_header_white::after {
+    background: #fff;
+}
+
+.inner_header h1 {
+    font-size: 3rem;
+}
+
+.inner_header ul {
+    list-style: none;
+    margin: 0 0 6.75rem 0;
+    padding: 0;
+    font-size: .75rem;
+    color: rgba(255,255,255,.3);
+}
+
+.inner_header ul li {
+    display: inline-block;
+}
+
+.inner_header ul a {
+    color: white;
+}
+
+.inner_header ul a:hover {
+    color: #9BC332;
+}
+
+.inner_header picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.inner_header picture::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
+    opacity: .75;
+}
+
+.inner_header picture::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(198deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
+    opacity: .75;
+}
+
+.inner_header picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.inner_block_2 {
+    background: #f1f1f1;
+    position: relative;
+    padding-bottom: 6.75rem;
+}
+
+.inner_block_2 h2 {
+    font-size: 2rem;
+    color: #131313;
+}
+
+.inner_block_2 .card_2 .more {
+    background: #f1f1f1;
+}
+
+.inner_block_2 .card_2 .more::before {
+    background: url(../img/corner_reverse_2.svg) center no-repeat;
+}
+
+.inner_block_2 .card_2 .more::after {
+    background: url(../img/corner_reverse_2.svg) center no-repeat;
+}
+
+.inner_block_2 .card_2 {
+    margin-top: 2rem;
+}
+
+.inner_block_2::after {
+    content: '';
+    width: 100%;
+    height: 3.75rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: white;
+    z-index: 9;
+    border-radius: 3.75rem 3.75rem 0 0;
+}
+
+.inner_block_3 {
+    background: white;
+    padding-bottom: 3rem;
+}
+
+.inner_block_3 h2 {
+    font-size: 2rem;
+    color: #131313;
+}
+
+.product_card {
+    margin-top: 2rem;
+}
+
+.product_card picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.product_card img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: .3s all;
+}
+
+.product_card picture:hover img {
+    transform: scale(1.1);
+}
+
+.product_card > div {
+    padding: 1.5rem;
+    color: #131313;
+}
+
+.product_card a {
+    color: #131313;
+    font-size: 1.5rem;
+    font-family: 'Aeroport-Medium';
+}
+
+.product_card a:hover {
+    color: #9BC332;
+}
+
+.product_card p {
+    font-size: 15px;
+}
+
+.product_card button {
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    background: transparent;
+    border: 1px solid rgba(19, 19, 19, .1);
+    color: #131313;
+    border-radius: 3rem;
+}
+
+.product_card button:hover {
+    background: #9BC332;
+    color: white;
+    border-color: transparent;
+}
+
+.inner_block_2 .block_6 {
+    margin-top: 0;
+}
+
+.category_inner_image picture {
+    width: calc(100% - 43px);
+    border-radius: 1rem;
+    overflow: hidden;
+    display: block;
+}
+
+.category_inner_image picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.category_inner h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+.category_inner p {
+    font-size: 15px;
+}
+
+.category_inner .product_card {
+    margin: 1rem 0;
+}
+
+.inner_block_2_2 .ratio-4x3 picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.inner_block_2_2 .ratio-4x3 picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: .3s all;
+}
+
+.inner_block_2_2 .ratio-4x3 picture:hover img {
+    transform: scale(1.1);
+}
+
+.mini_photos {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+}
+
+.mini_photos > div {
+    width: calc(20% - 1rem);
+    margin: .5rem .5rem;
+}
+
+.mini_photos .ratio picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.mini_photos .ratio picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: .3s all;
+}
+
+.mini_photos .ratio picture:hover img {
+    transform: scale(1.1);
+}
+
+.product_inner_description {
+    padding-left: 43px;
+    color: #131313;
+}
+
+.product_inner_description h2 {
+    font-size: 2rem;
+}
+
+.table_row {
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E1E1E1;
+    padding: 1rem 0;
+}
+
+.table_row > div:first-child {
+    margin-right: 2rem;
+}
+
+.table_row_2 {
+    font-size: 15px;
+    padding-top: 1rem;
+}
+
+.table_row_2 ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: .75rem 0 0 0;
+    padding: 0;
+}
+
+.table_row_2 ul li {
+    margin: .75rem .75rem 0 0;
+    padding: 7px 10px;
+    border-radius: .5rem;
+    background: white;
+}
+
+.order {
+    display: inline-flex;
+    margin: 2rem 0;
+    padding: 1.5rem 2rem 1.2rem 2rem;
+    border-radius: 5rem;
+    color: white;
+    background: #9BC332;
+    font-size: 1rem;
+    font-family: 'Aeroport-Medium';
+    border: 0;
+}
+
+.order:hover {
+    background: #054996;
+}
+
+.product_inner_description p {
+    font-size: 1rem;
+    margin: 1.5rem 0 0 0;
+}
+
+.inner_about {
+    background: white;
+}
+
+.company_categories .ratio picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 3rem;
+}
+
+.company_categories .ratio picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: .3s all;
+}
+
+.company_categories .ratio:hover picture img {
+    transform: scale(1.1);
+}
+
+.company_categories .ratio picture::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+}
+
+.company_categories {
+    margin-bottom: 2.25rem;
+}
+
+.company_categories .ratio div > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3rem;
+    font-size: 2rem;
+    color: #fff;
+    transition: .3s all;
+}
+
+.company_categories .ratio div > div:hover {
+    color: #9BC332;
+}
+
+.company_tabs {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 3.75rem;
+}
+
+.company_tabs a {
+    color: #999;
+}
+
+.company_tabs a:hover {
+    color: #131331;
+}
+
+.company_tabs .active a {
+    color: #131313;
+    font-family: 'Aeroport-Medium';
+}
+
+.company_tabs .active {
+    border-bottom: 1px solid #131313;
+    padding-bottom: 1.2rem;
+}
+
+.about_inner_picture img {
+    width: 100% !important;
+    border-radius: 1rem;
+}
+
+.about_inner_text p {
+    font-size: 1.125rem;
+    color: #131313;
+}
+
+.years {
+    margin: 3.75rem 0;
+    color: #131313;
+}
+
+.years .year {
+    font-size: 3rem;
+    margin-bottom: 4.5rem;
+}
+
+.years .circle {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 1.5rem;
+    background: #9BC332;
+    position: absolute;
+    top: 5.3rem;
+    left: 0;
+}
+
+.years hr {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    opacity: 1 !important;
+    background: #e1e1e1;
+    top: 0;
+    margin: 6rem 0 0 0;
+}
+
+.years p {
+    font-size: 1rem;
+    width: 90%;
+}
+
+.years .item button {
+    background: transparent;
+    border: 1px solid #e1e1e1;
+    color: #131313;
+    font-size: .75rem;
+    padding: 1rem 2rem .9rem 2rem;
+    border-radius: 5rem;
+}
+
+.years .item button:hover {
+    background: #9BC332;
+    border-color: transparent;
+    color: #fff;
+}
+
+.plans {
+    padding-top: 100px;
+    padding-bottom: 180px;
+    background: url(../img/plans.webp) center no-repeat;
+    background-size: cover;
+    border-radius: 3.75rem;
+    color: white;
+    position: relative;
+    margin-bottom: calc(3.75rem + 81px);
+}
+
+.plans h2 {
+    font-size: 3.5rem;
+    font-family: 'Aeroport-Bold', sans-serif !important;
+}
+
+.plans ul {
+    margin: 0;
+    padding: 0;
+    font-size: 1.3rem;
+}
+
+.plans ul li {
+    margin: .75rem 0;
+}
+
+.plans_links {
+    width: 100%;
+    height: 162px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: -81px;
+}
+
+.plans_links .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.plans_link {
+    position: relative;
+    width: 100%;
+    height: 162px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.plans_link .more {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 5;
+}
+
+.p_l {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.p_l img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: .3s all;
+}
+
+.plans_link:hover .p_l img {
+    transform: scale(1.1);
+}
+
+.plans_link > div {
+    position: absolute;
+    display: flex;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+    transition: .3s all;
+    background: rgb(0,0,0);
+    background: linear-gradient(12deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%);
+}
+
+.plans_link:hover > div {
+    color: #9BC332;
+}
+
+.about_product_block_1 h2 {
+    font-size: 3rem;
+    color: #131313;
+}
+
+.text_1 {
+    padding: 2rem 0;
+    background: url(../img/oval.svg) center left no-repeat;
+    background-size: 95px;
+    display: inline-block;
+    font-size: 3rem;
+    font-style: italic;
+}
+
+.about_product_block_1_1 {
+    padding: 3rem;
+    background: #f1f1f1;
+    color: #131313;
+    border-radius: 1.5rem;
+}
+
+.about_product_block_1_1 p {
+    font-size: 1rem;
+    margin: 1rem 0 0 0;
+}
+
+.about_product_block_1_1 p strong {
+    font-size: 1.5rem;
+}
+
+.about_product_block_2 {
+    border-radius: 3.75rem 3.75rem 0 0;
+    padding-top: 3.75rem;
+    background: #f1f1f1;
+    margin-top: 2.25rem;
+    padding-bottom: 5.8rem;
+    position: relative;
+}
+
+.about_product_block_2::after {
+    content: '';
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    height: 3.75rem;
+    left: 0;
+    border-radius: 3.75rem 3.75rem 0 0;
+    background: white;
+}
+
+.about_product_block_2 h2 {
+    font-size: 2rem;
+    color: #131313;
+}
+
+.about_product_block_3 h2 {
+    font-size: 2rem;
+    color: #131313;
+    margin-bottom: 3.75rem;
+}
+
+.about_product_block_3_1 {
+    padding: 3.75rem 3.75rem 3.2rem 3.75rem;
+    color: white;
+    background: #054996;
+    font-size: 1.5rem;
+    border-radius: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+	display: flex;
+	align-items: center;
+}
+
+.about_product_block_3_1 picture {
+	width: 4rem !important;
+	display: block;
+	margin-right: 1.5rem;
+}
+
+.about_product_block_3_1 p {
+    margin: 0;
+}
+
+.step_block {
+    padding-bottom: 2rem;
+    color: #131313;
+    position: relative;
+}
+
+.step_block .ratio picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.step_block .ratio picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: .3s all;
+}
+
+.step_block .ratio picture:hover img {
+    transform: scale(1.1);
+}
+
+.step_block p {
+    font-size: 1rem;
+    margin: .75rem 0;
+}
+
+.step_block .circle {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    background: #9BC332;
+}
+
+.step_block::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    width: 2px;
+    height: 100%;
+    z-index: -1;
+    background: url(../img/dashed.svg) center top repeat-y;
+}
+
+.step_block:last-child {
+    padding-bottom: 0;
+    margin-bottom: 1.5rem;
+}
+
+.step_block:first-child::before {
+    height: 50%;
+    bottom: 0;
+}
+
+.step_block:last-child::before {
+    height: 50%;
+}
+
+.project_photos .ratio-4x3 picture,
+.project_photos .ratio-16x9 picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 1.5rem;
+}
+
+.project_photos .ratio-16x9 picture {
+    cursor: auto;
+}
+
+.project_photos .ratio-4x3 picture img,
+.project_photos .ratio-16x9 picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: .3s all;
+    cursor: pointer;
+}
+
+.project_photos .ratio-4x3 picture:hover img,
+.project_photos .ratio-16x9 picture:hover img {
+    transform: scale(1.1);
+}
+
+.project_photos picture {
+    cursor: pointer;
+}
+
+.project_photos .mini_photos .ratio {
+    width: 30.7%;
+}
+
+.project_text {
+    color: #131313;
+}
+
+.project_text {
+    padding-top: 3rem;
+}
+
+.project_text .project_date {
+    display: inline-block;
+    font-size: 1rem;
+    background: #F0F0F0;
+    border-radius: .5rem;
+    padding: 10px 10px 8px 10px;
+}
+
+.project_text p {
+    font-size: 1.5rem;
+    margin: .75rem 0 0 0;
+}
+
+.project_text button {
+    padding: 1rem 1rem;
+    font-size: 15px;
+    color: #131313;
+    border: 0;
+    background: #F0F0F0;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 306px;
+    margin: 1rem 0 0 0;
+}
+
+.project_text button picture {
+    margin-left: .75rem;
+}
+
+.project_text button:hover {
+    background: #054996;
+    color: white;
+}
+
+.team_photo picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.team_photo picture img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.ratio-21x5 {
+    --bs-aspect-ratio: calc(5 / 21 * 100%);
+}
+
+.ratio-3x4 {
+    --bs-aspect-ratio: calc(4 / 3 * 100%);
+}
+
+.team_text_1 {
+    background: #054996;
+    border-radius: 1.5rem;
+    position: relative;
+    margin-top: -80px;
+    text-align: start;
+    margin-bottom: 3rem;
+    padding: 3rem 2rem;
+}
+
+.team_text_1 p {
+    color: white;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.team_inner h2 {
+    color: #131313;
+    font-size: 2rem;
+}
+
+.team_block_2 {
+    align-items: center;
+    margin-top: 2rem !important;
+}
+
+.team_block_2 img {
+    width: 100% !important;
+    border-radius: 1.5rem;
+}
+
+.team_block_2 p {
+    font-size: 13px;
+    color: #131313;
+}
+
+.team_block_2 .application {
+    color: white !important;
+    padding: 1.5rem 2rem;
+}
+
+.team_block_2 p strong {
+    font-size: 1.5rem;
+}
+
+.team_block_2 p span {
+    font-size: 1rem;
+}
+
+.team_block_2 > div {
+    padding-left: 43px;
+}
+
+.team_block_3 h2 {
+    font-size: 2rem;
+    color: #131313;
+    margin-bottom: 1.5rem;
+}
+
+.team_block_3 button {
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    display: flex;
+    font-size: 1.125rem;
+    color: #131313;
+    background: transparent;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0;
+    text-align: start;
+}
+
+.team_block_3 button:hover {
+    border-color: #131313;
+}
+
+.team_block_3 button picture {
+    margin-left: .75rem;
+}
+
+.new_inner_text {
+    padding: 32px 0 0 43px !important;
+}
+
+.new_inner_text p {
+    font-size: 1rem;
+}
+
+.new_inner_text .project_date {
+    font-size: .75rem;
+}
+
+.project_photos {
+    position: relative;
+}
+
+.project_photos .ya-share2 {
+    position: absolute;
+    z-index: 99;
+    background: #fff;
+    border-radius: 100%;
+    right: 2rem;
+    bottom: 1.5rem;
+    transition: .3s all;
+}
+
+.project_photos .ya-share2:hover {
+    transform: scale(1.2);
+}
+
+.map {
+    position: relative;
+    height: 550px;
+    background: #e1e1e1;
+    width: calc(100% + 1.5rem);
+    margin: -3.75rem 0 0 -.75rem;
+    z-index: 9;
+    border-radius: 3.75rem 0 0 0;
+    overflow: hidden;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.contacts_block {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.contacts_block a {
+    color: #131313;
+}
+
+.contacts_block a:hover {
+    color: #054996;
+}
+
+footer ul .active a,
+.cpy .active,
+#menu .active {
+    color: #9BC332;
+}
+
+.menu .active {
+    color: #054996;
+    font-family: 'Aeroport-Medium', sans-serif;
+}
+
+.modal-content img {
+    border-radius: 1rem !important;
+    width: 100% !important;
+}
+
+.social_block img {
+    width: 2.5rem !important;
+    transition: .3s all;
+}
+
+.social_block img:hover {
+    transform: scale(1.1);
+}
+
+#menu .social_block {
+    margin-left: 1.5rem;
+}
+
+.contacts_block .social_block img {
+    width: 3rem !important;
+}
+
+@media (min-width: 1440px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1300px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .block_7 .about_text p {
+        font-size: 1rem;
+        margin: 0 0 1.5rem 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .menu {
+        margin: 0;
+    }
+
+    .catalog {
+        margin-right: 1.5rem;
+    }
+
+    .block_2 span,
+    .block_2 p,
+    .block_2 h2,
+    .block_2 button {
+        margin-left: 0 !important;
+    }
+
+    .block_8 .col-xl-4 {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .card_1 .card_text span {
+        font-size: .6rem;
+    }
+
+    .card_1 .card_text a {
+        font-size: 1.3rem;
+    }
+
+    .card_1 .card_text p {
+        font-size: .9rem;
+    }
+
+    .block_7 .about_text {
+        width: calc(100% - 3rem);
+        margin: -3rem 0 0 1.5rem;
+    }
+
+    footer .col {
+        flex-wrap: wrap;
+    }
+
+    footer .f_1 {
+        width: 50%;
+        margin-bottom: 3rem;
+    }
+
+    .cpy hr {
+        margin-top: 0;
+    }
+
+    .category_inner_image picture {
+        width: 100%;
+    }
+
+    .product_inner_description {
+        padding-left: 0;
+    }
+
+    .plans {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .plans_links {
+        position: relative;
+        height: auto;
+        margin: 3rem 0 0 0 !important;
+    }
+
+    .step_block p {
+        margin: 1.5rem 0 0 0;
+    }
+
+    .step_block:first-child::before {
+        height: 70%;
+    }
+    
+    .step_block:last-child::before {
+        height: 20%;
+    }
+
+    .team_block_2 > div {
+        padding-left: 0;
+    }
+
+    .new_inner_text {
+        padding-left: .75rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .block_1 h1 {
+        font-size: 2rem;
+    }
+
+    .numbers {
+        flex-direction: column;
+        margin-top: 2rem !important;
+    }
+
+    .numbers div {
+        margin: 1rem 0;
+    }
+
+    .ratio-21x5 {
+        --bs-aspect-ratio: calc(9 / 21 * 100%);
+    }
+    
+    .team_text_1 {
+        padding: 1.5rem;
+    }
+
+    .team_text_1 p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    header .container {
+        background: #fff;
+        border-radius: 0 0 2rem 2rem;
+    }
+
+    .h_1 img {
+        width: 120px !important;
+    }
+
+    .application {
+        font-size: 13px;
+        padding: 1rem 1.5rem;
+        margin: 0 1rem 0 0;
+    }
+    
+    .block_1 picture::before,
+    .block_1 picture::after {
+        opacity: 1;
+    }
+
+    .block_1 h1 {
+        font-size: 1.6rem;
+        margin-top: 200px;
+    }
+
+    .block_1 p {
+        font-size: 15px;
+        margin: 2rem 0 4rem 0;
+    }
+    
+    .block_1::after {
+        border-radius: 2rem 2rem 0 0;
+        height: 2rem;
+    }
+
+    .block_2 {
+        padding-bottom: 4rem;
+    }
+
+    .block_2::after,
+    .block_7::after,
+    .block_8::after,
+    .inner_header::after,
+    .inner_block_2::after {
+        height: 2rem;
+        border-radius: 2rem 2rem 0 0;
+    }
+
+    .block_2 p {
+        font-size: 15px;
+    }
+
+    .block_2 button {
+        font-size: 13px;
+    }
+
+    .numbers div {
+        font-size: 1rem;
+    }
+
+    .numbers div b {
+        font-size: 4rem;
+    }
+
+    .block_3 h2,
+    .block_4 h2,
+    .block_7 .about_text h2,
+    .inner_block_2 h2,
+    .inner_block_3 h2 {
+        font-size: 1.6rem;
+    }
+
+    .block_5 {
+        border-radius: 2rem;
+    }
+
+    .block_5 .col {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .block_5 h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .block_5 h3 {
+        font-size: 1.5rem;
+        font-family: 'Aeroport-Medium', sans-serif !important;
+    }
+    
+    .block_5 p {
+        font-size: .8rem;
+        max-width: 600px;
+        margin: 1rem 0 2rem 0;
+    }
+
+    .card_2 .card_text {
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .block_4 hr {
+        margin-top: 1.5rem;
+    }
+
+    .block_6 .col-lg-3 picture {
+        display: block;
+        width: 4rem !important;
+    }
+
+    .block_6 .col-lg-3 p {
+        font-size: .8rem;
+    }
+
+    .block_7 {
+        border-radius: 2rem 2rem 0 0;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    .block_7 .about_text {
+        padding: 1.5rem;
+        width: calc(100% - 1.5rem);
+        margin: -3rem 0 0 .75rem;
+    }
+
+    .block_7 .about_text p {
+        font-size: .9rem;
+    }
+
+    .news_main {
+        padding-top: 3rem !important;
+    }
+
+    .block_8 {
+        margin-top: 2rem;
+        border-radius: 2rem 2rem 0 0;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    footer .f_1 {
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .line_1 {
+        margin-top: 0;
+    }
+
+    .inner_block_2_2 {
+        padding-bottom: 4rem;
+    }
+
+    .inner_header ul {
+        margin-bottom: 5rem;
+    }
+
+    .mini_photos .ratio picture {
+        border-radius: .5rem;
+    }
+
+    .company_categories .ratio picture,
+    .company_categories .ratio div > div {
+        border-radius: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .plans h2 {
+        font-size: 2rem;
+    }
+
+    .plans {
+        border-radius: 2rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .about_inner_text p {
+        font-size: 1rem;
+    }
+
+    .company_tabs {
+        overflow-x: scroll;
+        width: auto;
+        font-size: 1.2rem;
+    }
+
+    .company_tabs li {
+        white-space: nowrap;
+    }
+
+    .company_tabs li {
+        margin-right: 4rem;
+    }
+
+    .company_tabs li:last-child {
+        margin-right: 0;
+    }
+
+    .about_product_block_1 h2 {
+        font-size: 2rem;
+    }
+
+    .about_product_block_1_1 {
+        padding: 2rem;
+    }
+    
+    .about_product_block_1_1 p {
+        font-size: .9rem;
+        margin: 1rem 0 0 0;
+    }
+
+    .about_product_block_1_1 p strong {
+        font-size: 1.2rem;
+    }
+    
+    .about_product_block_2::after {
+        height: 2rem;
+        border-radius: 2rem 2rem 0 0;
+    }
+
+    .about_product_block_2 {
+        border-radius: 2rem 2rem 0 0;
+        padding-top: 2rem;
+        padding-bottom: 3.8rem;
+    }
+
+    .about_product_block_2 h2 {
+        font-size: 1.6rem;
+    }
+
+    .about_product_block_3_1 {
+        padding: 2rem 2rem 1.8rem 2rem;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .step_block:first-child::before {
+        height: 80%;
+    }
+    
+    .about_product_block_3 h2 {
+        font-size: 1.6rem;
+    }
+
+    .project_photos .mini_photos .ratio {
+        width: 28.5%;
+    }
+
+    .team_inner h2 {
+        font-size: 1.6rem;
+    }
+
+    .ratio-21x5 {
+        --bs-aspect-ratio: calc(11 / 21 * 100%);
+    }
+
+    .team_block_3 h2 {
+        font-size: 1.6rem;
+    }
+
+    .contacts_block {
+        margin-bottom: 2rem;
+    }
+
+    .map {
+        border-radius: 2rem;
+        height: 330px;
+    }
+
+    .about_product_block_3_1 picture {
+        width: 3rem !important;
+    }
+
+    .social_block img {
+        width: 3.5rem !important;
+    }
+
+    .table_row {
+        flex-direction: column;
+        align-items: start;
+
+    }
+
+    .table_row > .text-end {
+        text-align: start !important;
+    }
+
+    .table_row > .text-end span {
+        justify-content: start !important;
+        margin: .5rem 0;
+    }
+
+}

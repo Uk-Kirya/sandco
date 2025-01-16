@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'team' %} — Sandco.kz
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Команда</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li><a href="{% url 'catalog:company' %}">{% trans 'company' %}</a> /</li>
+                            <li>{% trans 'team' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="company_tabs">
+                            <li><a href="{% url 'catalog:origins' %}">{% trans 'origins' %}</a></li>
+                            <li><a href="{% url 'catalog:about-product' %}">{% trans 'about_product' %}</a></li>
+                            <li><a href="{% url 'catalog:projects' %}">{% trans 'projects' %}</a></li>
+                            <li class="active"><a href="{{ request.path }}">{% trans 'team' %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5">
+            <div class="row team_inner">
+                <div class="col text-lg-center">
+                    <div class="team_text_1" style="margin-top:0;">
+                        {% if request.LANGUAGE_CODE == 'ru' %}
+                            <p>Основатель компании Жуманалин Сакен Каримбекович посвятил всю жизнь развитию кокшетауского производства, где долгое время собирал команду верных своему делу специалистов. Все это время SandCo приносит пользу родному городу и работает по всему Казахстану благодаря простым, но очень важным ценностям – ответственность, честность, принципиальность и умение работать в команде. Именно это помогает создавать то, что будет работать не один десяток лет. Как и 25 лет назад именно таких людей мы ценим. Присоединяйтесь к нам, если вы разделяете наши принципы.</p>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                            <p>The founder, Saken Karimbekovich, dedicated his life to developing the Kokshetau production, gathering a team of committed specialists over the years. SandCo continues to benefit the hometown and operates across Kazakhstan, adhering to values of responsibility, honesty, principles, and teamwork, which contribute to creating products that last for decades. Just as 25 years ago, we value people who share these principles. Join us if you share our values.</p>
+                        {% else %}
+                            <p>Компанияның негізін қалаушы Жұманалин Сәкен Кәрімбекұлы ес білгелі Көкшетау өндірісінің өркендеуіне ат салысып жүр. Осы уақыт ішінде ол кісі айналасына адал мамандар бригадасын жинады. Жауапкершілік, адалдық және топта жұмыс істей алу сияқты қарапайым, бірақ өте маңызды құндылықтар арқасында компаниямыз туған өлкеге пайда әкеліп, бүкіл Қазақстан бойынша жақсы жұмыс істеп келеді. Осындай құндылықтардың арқасында ғана ұзақ жылдар бойы жұмыс жасайтын компания құруға болады. 25 жыл бұрын біз осындай құндылықтары бар адамдарды бағалағанбыз және қазір де сондай адамдарды бағалаймыз. Құндылықтарымыз ортақ болып, бір бағытқа қарайтын болсақ, бізге қосылуға асығыңыз.</p>
+                        {% endif %}
+                    </div>
+                    <div class="row team_block_2 align-items-center text-start p-4 p-lg-0">
+                        <div class="col-lg-7">
+                            <picture>
+                                <img src="{% static 'img/team_bg.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}" style="border-radius:1rem;">
+                            </picture>
+                        </div>
+                        <div class="col-lg-5 mt-4 mt-lg-0">
+                            <div>
+                                {% if request.LANGUAGE_CODE == 'ru' %}
+                                    <p class="fs-5">В SandCo действует коллективный договор, который закрепляет льготы для работников: премии и льготные программы, возможность бесплатного обучения и карьерного роста в компании. Со дня основания компании у нас развито менторство для передачи знаний и опыта молодому поколению.</p><br>
+                                    <a href="https://hh.kz/employer/10869039?hhtmFrom=vacancy" class="application fs-4" target="_blank">Смотреть вакансии</a>
+                                {% elif request.LANGUAGE_CODE == 'en' %}
+                                    <p class="fs-5">At SandCo, a collective agreement is in place that provides employees with various benefits, including bonuses and special programs, as well as opportunities for free training and career advancement within the company. Since the company’s founding, we have fostered a mentorship culture to pass on knowledge and experience to the younger generation.</p><br>
+                                    <a href="https://hh.kz/employer/10869039?hhtmFrom=vacancy" class="application fs-4" target="_blank">View jobs</a>
+                                {% else %}
+                                    <p class="fs-5">SandCo-да қызметкерлерге арналған жеңілдіктер қарастыратын ұжымдық келісім бар және оған бонустар мен жеңілдік бағдарламалары, тегін оқу және компанияда мансаптық өсу мүмкіндіктері кіреді. Компания құрылғаннан бері біз өскелең ұрпақты білім мен тәжірибемен қамтамасыз ету үшін тәлімгерлікті дамыттық.</p><br>
+                                    <a href="https://hh.kz/employer/10869039?hhtmFrom=vacancy" class="application fs-4" target="_blank">Бос жұмыс орындарын көру</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

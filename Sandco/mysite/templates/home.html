@@ -1,0 +1,326 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    Sandco.kz — {% trans 'Главная' %} — {{ description }} — {{ keywords }}
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ description }}
+{% endblock %}
+
+
+{% block content %}
+    <main>
+        <div class="container-fluid block_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        {% if request.LANGUAGE_CODE == 'ru' %}
+                            <h1>Крупнейшее производство фракционированного кварцевого песка в Казахстане</h1>
+                            <p>Реализуем проекты во всему Казахстану и в странах ближнего зарубежья. Находим лучшие решения под каждый запрос и обеспечиваем высокое качество.</p>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                            <h1>Greatest High-Silica Sand Processing Plant in Kazakhstan</h1>
+                            <p>We implement projects all over Kazakhstan and in neighboring countries. Finding the best solutions We provide high quality for every request.</p>
+                        {% else %}
+                            <h1>Қазақстандағы фракцияланған кварц құмының ең ірі өндірісі</h1>
+                            <p>Жобаларды бүкіл Қазақстанда және таяу шет елдерде іске асырамыз. Біз ең жақсы шешімдерді табамыз әрбір сұраныс үшін және жоғары сапаны қамтамасыз етіңіз.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}">
+            </picture>
+        </div>
+        <div class="container-fluid block_2">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <iframe src="https://www.youtube.com/embed/kwHPPn2JhEc?si=ccAJnrtDHVOiVWag" title="{{ keywords }} - {{ description }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    {% if request.LANGUAGE_CODE == 'ru' %}
+                        <div class="col-lg-5 mt-4 mt-lg-0">
+                            <span>ранее «Намыс»</span>
+                            <h2>SandCo</h2>
+                            <p>Специализируется на производстве и поставке высококачественного фракционированного кварцевого песка.</p>
+                            <p>SANDCO основана в 1999 году в Кокшетау, производство ведется на базе месторождения Карьерное
+                                (СКО). Компания располагает технологической линией, технической лабораторией,
+                                комплексом ж/д путей и другими структурами, обеспечивающими реализацию комплексного подхода.</p>
+                            <button onclick="window.location.href = '{% url 'catalog:company' %}';">{% trans 'more_about_company' %}</button>
+                        </div>
+                    {% elif request.LANGUAGE_CODE == 'kz' %}
+                        <div class="col-lg-5 mt-4 mt-lg-0">
+                            <span>Бұрын «Намыс» жеп аталған</span>
+                            <h2>SandCo</h2>
+                            <p>Жоғары сапалы фракцияланған кварц құмын өндіруге және жеткізуге маманданған компания.</p>
+                            <p>SandCO 1999 жылы Көкшетау қаласында құрылған, ал өндіріс Карьерное кен орны (Солтүстік Қазақстан өңірі) базасында жүзеге асырылады. Кәсіпорынның технологиялық желісі, техникалық зертханасы, темір жолдар кешені және кешенді тәсілді жүзеге асыруды қамтамасыз ететін басқа да құрылымдары бар.</p>
+                            <button onclick="window.location.href = '{% url 'catalog:company' %}';">{% trans 'more_about_company' %}</button>
+                        </div>
+                    {% else %}
+                        <div class="col-lg-5 mt-4 mt-lg-0">
+                            <span>Within the Namys Group</span>
+                            <h2>SandCo</h2>
+                            <p>Our company specializes on the production and supply of high-quality fractionated quartz sand. SandCo was founded in 1999 in Kokshetau, with production based on the Kariernoe field (North Kazakhstan region). The company also includes a technological line, technical laboratory, railway complex, and other structures enabling a comprehensive approach.</p>
+                            <button onclick="window.location.href = '{% url 'catalog:company' %}';">{% trans 'more_about_company' %}</button>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col numbers">
+                        {% for number in numbers %}
+                        <div>
+                            <b>{{ number.number }}</b>
+                            {{ number.text }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container block_3">
+            <div class="row align-items-center">
+                <div class="col-lg-8 text-center text-lg-start">
+                    {% if request.LANGUAGE_CODE == 'ru' %}
+                        <h2>Сотрудничаем с ведущими компаниями</h2>
+                    {% elif request.LANGUAGE_CODE == 'en' %}
+                        <h2>Our Patners</h2>
+                    {% else %}
+                        <h2>Біздің серіктестер</h2>
+                    {% endif %}
+                </div>
+                <div class="d-none d-lg-block col-4 text-lg-end">
+                    <button onclick="window.location.href = '{% url 'catalog:projects' %}';">{% trans 'all_projects' %}</button>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col logos_main">
+                    {% for logo in logos %}
+                        {% if logo.link %}
+                        <a href="{{ logo.link }}" target="_blank" aria-label="{{ logo.link }}">
+                            <div class="ratio-1x1 ratio">
+                                <div>
+                                    <picture>
+                                        <img src="{{ logo.image.url }}" alt="{{ logo.image_alt }}" title="{{ logo.image_title }}">
+                                    </picture>
+                                </div>
+                            </div>
+                        </a>
+                        {% else %}
+                            <div class="ratio-1x1 ratio">
+                                <div>
+                                    <picture>
+                                        <img src="{{ logo.image.url }}" alt="{{ logo.image_alt }}" title="{{ logo.image_title }}">
+                                    </picture>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-lg-none col text-center mt-3 mb-4">
+                    <button onclick="window.location.href = '{% url 'catalog:projects' %}';">{% trans 'all_projects' %}</button>
+                </div>
+            </div>
+            {% if projects %}<hr>{% endif %}
+        </div>
+        {% if projects %}
+            <div class="container block_4">
+                <div class="row">
+                    <div class="col-12 text-center text-sm-start">
+                        {% if request.LANGUAGE_CODE == 'ru' %}
+                            <h2>Портфолио проектов</h2>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                            <h2>Project portfolio</h2>
+                        {% else %}
+                            <h2>Жоба портфолиосы</h2>
+                        {% endif %}
+                    </div>
+                    <div class="col-12 mt-5 mt-sm-0">
+                        <div class="owl-carousel owl-theme carousel_1">
+                            {% for project in projects %}
+                                <div class="item">
+                                    <div class="card_1">
+                                        <picture>
+                                            <img src="{{ project.image.url }}" alt="{{ project.image_alt }}" title="{{ project.image_title }}">
+                                        </picture>
+                                        <a href="{% url 'catalog:project-details' slug=project.slug %}" class="more" aria-label="{{ project.title }}">
+                                            <picture>
+                                                <img src="{% static 'img/more_1.svg' %}" alt="">
+                                            </picture>
+                                        </a>
+                                        <div class="card_text">
+                                            <span>{{ project.date }}</span>
+                                            <a href="{% url 'catalog:project-details' slug=project.slug %}">{{ project.title }}</a>
+                                            <p>{{ project.announcement }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="container-fluid block_5">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        {% if request.LANGUAGE_CODE == 'ru' %}
+                            <h2>СЭКОНОМЬТЕ СРЕДСТВА</h2>
+                            <h3>на поиске поставщика-производителя</h3>
+                            <p>Мы сами производим, обогащаем и поставляем продукцию. Отсутствие посредников и комплексность услуг позволит значительно сэкономить ваши деньги и время</p>
+                            <button data-bs-toggle="modal" data-bs-target="#application">Начнем сотрудничество</button>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                            <h2>SAVE</h2>
+                            <h3>on a deal with the producer</h3>
+                            <p>By handling the production, processing, and delivery of our materials in-house, we eliminate intermediaries, which means our prices are free from markups. Our comprehensive approach also helps you save time.</p>
+                            <button data-bs-toggle="modal" data-bs-target="#application">Collaborate</button>
+                        {% else %}
+                            <h3>Өндіруші мен жеткізушіні іздеуде</h3>
+                            <h2>ҚАРЖЫҢЫЗДЫ ҮНЕМДЕҢІЗ</h2>
+                            <p>Біз өнімді өзіміз өндіріп, өзіміз байытып, өзіміз жеткіземіз. Делдалдар мен кешенді қызметтердің болмауы сіздің ақшаңыз бен уақытыңызды айтарлықтай үнемдейді.</p>
+                            <button data-bs-toggle="modal" data-bs-target="#application">Серіктестікті бастайық</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if spheres %}
+            <div class="container block_4">
+                <div class="row">
+                    <div class="col-12 text-center text-sm-start">
+                        <h2>{% trans 'spheres' %}</h2>
+                    </div>
+                    <div class="col-12 mt-5 mt-sm-0">
+                        <div class="owl-carousel owl-theme carousel_1">
+                            {% for sphere in spheres %}
+                                <div class="item">
+                                    <div class="card_2">
+                                        <a href="{{ sphere.link }}" aria-label="{{ sphere.title }}">
+                                            <picture>
+                                                <img src="{{ sphere.image.url }}" alt="{{ sphere.image_alt }}" title="{{ sphere.image_title }}">
+                                            </picture>
+                                        </a>
+                                        <a href="{{ sphere.link }}" class="more" aria-label="{{ sphere.title }}">
+                                            <picture>
+                                                <img src="{% static 'img/more_2.svg' %}" alt="">
+                                            </picture>
+                                        </a>
+                                        <div class="card_text">
+                                            <a href="{{ sphere.link }}" aria-label="{{ sphere.title }}">{{ sphere.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        {% endif %}
+        <div class="container block_6">
+            <div class="row">
+                <div class="col-12">
+                    <h2>{% trans 'why_we' %}</h2>
+                </div>
+                {% for benefit in benefits %}
+                    <div class="col-6 col-lg-3">
+                        <div>
+                            <picture>
+                                <img src="{{ benefit.icon.url }}" alt="{{ benefit.icon_alt }}" title="{{ benefit.icon_title }}">
+                            </picture>
+                        </div>
+                        <div>
+                            <p>{{ benefit.text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container-fluid block_7">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <picture>
+                            <img src="{% static 'img/team_bg.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}">
+                        </picture>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="about_text">
+                            {% if request.LANGUAGE_CODE == 'ru' %}
+                                <h2>Больше, чем просто работа</h2>
+                                <p>Наша команда – опытные специалисты, умеющие работать в команде. Присоединяйтесь и вы!</p>
+                                <p>Мы предлагаем вакансии во многих направлениях и предоставляем возможности карьерного роста, полного социального
+                                    обеспечения
+                                    и удобных для вас форматов работы.</p>
+                                <button onclick="window.location.href = '{% url 'catalog:team' %}';">Узнать о вакансиях</button>
+                            {% elif request.LANGUAGE_CODE == 'en' %}
+                                <h2>Work in SandCo</h2>
+                                <p>If you are looking for a fast-moving, varied and challenging career, join us!</p>
+                                <p>We offer opportunities across a broad range of disciplines, within an environment that promotes growth, safetiness, and stability.</p>
+                                <button onclick="window.location.href = '{% url 'catalog:team' %}';">Learn more</button>
+                            {% else %}
+                                <h2>Жай ғана жұмыс емес</h2>
+                                <p>Біздің ұжымдағы әр қызметкер – өз ісінің шебері. Егер тәжірибелі және топта жұмыс істей алатын мамандармен жұмыс істегіңіз келсе, бізге қосылыңыз!</p>
+                                <p>SandCo-да әртүрлі салаларда бос жұмыс орындары бар. Біз қызметкерлерімізге мансаптық өсу, толық әлеуметтік қамсыздандыру және ыңғайлы жұмыс форматтарын ұсынамыз.</p>
+                                <button onclick="window.location.href = '{% url 'catalog:team' %}';">Толығырақ</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if news %}
+            <div class="container block_3 mb-md-4">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 text-center text-sm-start">
+                        <h2>{% trans 'news_company' %}</h2>
+                    </div>
+                    <div class="d-none d-lg-block col-4 text-lg-end">
+                        <button onclick="window.location.href = '{% url 'catalog:blog' %}';">{% trans 'all_news' %}</button>
+                    </div>
+                </div>
+                <div class="row mt-3 news_main">
+                    <div class="col-12 mt-3">
+                        <div class="owl-carousel owl-theme carousel_2">
+                            {% for new in news %}
+                                <div class="item">
+                                    <div class="card_1">
+                                        <picture>
+                                            <img src="{{ new.image.url }}" alt="{{ new.image_alt }}" title="{{ new.image_title }}">
+                                        </picture>
+                                        <a href="{% url 'catalog:blog-details' slug=new.slug %}" class="more" aria-label="{{ new.title }}">
+                                            <picture>
+                                                <img src="{% static 'img/more_1.svg' %}" alt="">
+                                            </picture>
+                                        </a>
+                                        <div class="card_text">
+                                            <span>{{ new.date }}</span>
+                                            <a href="{% url 'catalog:blog-details' slug=new.slug %}" aria-label="{{ new.title }}">{{ new.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="d-lg-none col text-center mt-2 mb-4">
+                        <button onclick="window.location.href = '{% url 'catalog:blog' %}';">{% trans 'all_news' %}</button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}

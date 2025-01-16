@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'contacts' %} — Sandco.kz — {{ description }} — {{ keywords }}
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'contacts' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li>{% trans 'contacts' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="row align-items-center mb-lg-5">
+                <div class="col-lg-8">
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2383.137921157619!2d69.421174!3d53.3228838!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424c9589b97cbc8f%3A0x9e098c0c269e1b43!2sSandCo!5e0!3m2!1sru!2sru!4v1719319487877!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 contacts_block mt-5 mt-lg-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="f_1_1">
+                                <div>
+                                    <picture>
+                                        <img src="{% static 'img/phone.svg' %}" alt="">
+                                    </picture>
+                                </div>
+                                <div>
+                                    <span>{% trans 'sales_deportament' %}</span>
+                                    <a href="tel:+77003718141">+7 (700) 371-81-41</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-5 mb-5">
+                            <div class="f_1_1">
+                                <div>
+                                    <picture>
+                                        <img src="{% static 'img/location.svg' %}" alt="">
+                                    </picture>
+                                </div>
+                                <div>
+                                    <span>{% trans 'location' %}</span>
+                                    <p>{% trans 'location_text' %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="f_1_1">
+                                <div>
+                                    <picture>
+                                        <img src="{% static 'img/email.svg' %}" alt="">
+                                    </picture>
+                                </div>
+                                <div>
+                                    <span>{% trans 'email' %}</span>
+                                    <a href="mailto:sand@sandco.kz">sand@sandco.kz</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="social_block mt-5">
+                                <a href="https://facebook.com/sandco.kz/" target="_blank">
+                                    <picture>
+                                        <img src="{% static 'img/fb_white.svg' %}" alt="">
+                                    </picture>
+                                </a>
+                                <a href="https://youtube.com/@sandco_kz/" target="_blank">
+                                    <picture>
+                                        <img src="{% static 'img/you_white.svg' %}" alt="">
+                                    </picture>
+                                </a>
+                                <a href="https://www.instagram.com/sandco.kz/" target="_blank">
+                                    <picture>
+                                        <img src="{% static 'img/inst_white.svg' %}" alt="">
+                                    </picture>
+                                </a>
+                                <a href="https://www.linkedin.com/company/sandco-kz/" target="_blank">
+                                    <picture>
+                                        <img src="{% static 'img/linkedin_white.svg' %}" alt="">
+                                    </picture>
+                                </a>
+                                <a href="https://x.com/sandco_kz" target="_blank">
+                                    <picture>
+                                        <img src="{% static 'img/x_white.svg' %}" alt="">
+                                    </picture>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

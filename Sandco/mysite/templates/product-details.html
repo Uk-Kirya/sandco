@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {{ product.title }} — Sandco.kz
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ product.keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ product.description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'types_of_sand' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li><a href="{% url 'catalog:library' %}">{% trans 'library' %}</a> /</li>
+                            <li>{{ product.title }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ product.keywords }} - {{ product.description }}" title="{{ product.keywords }} - {{ product.description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_block_2 inner_block_2_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ratio ratio-4x3" data-src="{{ product.image.url }}" data-fancybox="gal">
+                            <div>
+                                <picture>
+                                    <img src="{{ product.image.url }}" alt="{{ product.image_alt }}" title="{{ product.image_title }}">
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="mini_photos">
+                            {% for photo in photos %}
+                                <div class="ratio ratio-1x1" data-src="{{ photo.image.url }}" data-fancybox="gal">
+                                    <div>
+                                        <picture>
+                                            <img src="{{ photo.image.url }}" alt="{{ photo.image_alt }}" title="{{ photo.image_title }}">
+                                        </picture>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <div class="product_inner_description">
+                            <h2>{{ product.title }}</h2>
+                            <div class="table_row">
+                                <div>
+                                    <b>{% trans 'type_of_sand' %}</b>
+                                </div>
+                                <div class="text-end">
+                                    {{ product.type }}
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <div>
+                                    <b>{% trans 'directions' %}</b>
+                                </div>
+                                <div class="text-end">
+                                    {% for category in categories %}
+                                        <span class="d-flex justify-content-end">{{ category.title }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="table_row_2">
+                                <div>
+                                    <b>{% trans 'fractions' %}</b>
+                                </div>
+                                {{ product.fractions|safe }}
+                            </div>
+                            <button class="order" data-bs-toggle="modal" data-bs-target="#application_product_{{ product.id }}">{% trans 'order_partions' %}</button>
+                            <div class="modal fade" id="application_product_{{ product.id }}" data-bs-backdrop="static" data-bs-keyboard="false">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title">{% trans 'modal_title_2' %}</h3>
+                                            <button class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{% url 'catalog:product-application' %}" method="post" class="needs-validation" novalidate>
+                                                {% csrf_token %}
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" name="name" class="form-control" id="floatingName_2" placeholder="{% trans 'your_name' %}" required>
+                                                    <label for="floatingName_2">{% trans 'your_name' %}</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" name="phone" class="phonee form-control" id="floatingPhone_2" placeholder="{% trans 'your_phone' %}" required>
+                                                    <label for="floatingPhone_2">{% trans 'your_phone' %}</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="email" name="email" class="form-control" id="floatingEmail_2" placeholder="{% trans 'your_email' %}">
+                                                    <label for="floatingEmail_2">{% trans 'your_email' %}</label>
+                                                </div>
+                                                <input type="hidden" name="product" value="{{ product.title }}">
+                                                <div class="form-floating mb-3">
+                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="category">
+                                                        <option selected disabled>{% trans 'interested' %}</option>
+                                                        {% for category in categories %}
+                                                            <option value="{{ category.title }}">{{ category.title }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <label for="floatingSelect">{% trans 'directions' %}</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" name="value" class="form-control" id="floatingValue" placeholder="{% trans 'value' %}">
+                                                    <label for="floatingValue">{% trans 'value' %}</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" name="package" class="form-control" id="floatingPackage" placeholder="{% trans 'package' %}">
+                                                    <label for="floatingPackage">{% trans 'package' %}</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" name="deadlines" class="form-control" id="floatingDeadlines" placeholder="{% trans 'deadlines' %}">
+                                                    <label for="floatingDeadlines">{% trans 'deadlines' %}</label>
+                                                </div>
+                                                <div class="mb-3 mt-3">
+                                                    <div class="g-recaptcha" data-sitekey="6Lf4Aw0qAAAAAF6AfYQuGPC7b2CpaF-oFLuJO-by"></div>
+                                                </div>
+                                                <button class="application" type="submit">
+                                                    {% trans 'send' %}
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ product.text|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid inner_block_3">
+            {% if projects %}
+                <div class="container block_4 block_4_2">
+                    <div class="row">
+                        <div class="col-12 text-center text-sm-start">
+                            {% if request.LANGUAGE_CODE == 'ru' %}
+                                <h2><span>Проекты с</span> «{{ product.title }}»</h2>
+                            {% elif request.LANGUAGE_CODE == 'en' %}
+                                <h2><span>Projects with</span> «{{ product.title }}»</h2>
+                            {% else %}
+                                <h2><span>Жобалар</span> «{{ product.title }}»</h2>
+                            {% endif %}
+                        </div>
+                        <div class="col-12 mt-5 mt-sm-0">
+                            <div class="owl-carousel owl-theme carousel_1">
+                                {% for project in projects %}
+                                    <div class="item">
+                                        <div class="card_1">
+                                            <picture>
+                                                <img src="{{ project.image.url }}" alt="{{ project.image_alt }}" title="{{ project.image_title }}">
+                                            </picture>
+                                            <a href="{% url 'catalog:project-details' slug=project.slug %}" class="more">
+                                                <picture>
+                                                    <img src="{% static 'img/more_1.svg' %}" alt="">
+                                                </picture>
+                                            </a>
+                                            <div class="card_text">
+                                                <span>{{ project.date }}</span>
+                                                <a href="{% url 'catalog:project-details' slug=project.slug %}">{{ project.title }}</a>
+                                                <p>{{ project.announcement }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="container block_4 pt-1">
+                <hr class="line_1">
+                <div class="row">
+                    <div class="col-12 text-center text-sm-start">
+                        <h2>{% trans 'the_main_direction' %}</h2>
+                    </div>
+                    <div class="col-12 mt-5 mt-sm-0">
+                        <div class="owl-carousel owl-theme carousel_3">
+                            {% for item in library %}
+                                <div class="item">
+                                    <div class="card_2">
+                                        <a href="{% url 'catalog:library-details' slug=item.slug %}">
+                                            <picture>
+                                                <img src="{{ item.image.url }}" alt="{{ item.image_alt }}" title="{{ item.image_alt }}">
+                                            </picture>
+                                        </a>
+                                        <a href="{% url 'catalog:library-details' slug=item.slug %}" class="more">
+                                            <picture>
+                                                <img src="{% static 'img/more_2.svg' %}" alt="">
+                                            </picture>
+                                        </a>
+                                        <div class="card_text">
+                                            <a href="{% url 'catalog:library-details' slug=item.slug %}">{{ item.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

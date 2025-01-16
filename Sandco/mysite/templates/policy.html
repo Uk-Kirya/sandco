@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'policy' %} — Sandco.kz
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'policy' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li>{% trans 'policy' %}и</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}">
+            </picture>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col">
+                    {% if request.LANGUAGE_CODE == 'ru' %}
+                        <p>Политика конфиденциальности</p>
+                    {% elif request.LANGUAGE_CODE == 'en' %}
+                        <p>Privacy Policy</p>
+                    {% else %}
+                        <p>Құпиялылық саясаты</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'projects' %} — Sandco.kz
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'projects' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li><a href="{% url 'catalog:company' %}">{% trans 'company' %}</a> /</li>
+                            <li>{% trans 'projects' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="company_tabs">
+                            <li><a href="{% url 'catalog:origins' %}">{% trans 'origins' %}</a></li>
+                            <li><a href="{% url 'catalog:about-product' %}">{% trans 'about_product' %}</a></li>
+                            <li class="active"><a href="{{ request.path }}">{% trans 'projects' %}</a></li>
+                            <li><a href="{% url 'catalog:team' %}">{% trans 'team' %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                {% if projects  %}
+                    {% for project in projects %}
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card_1">
+                                <picture>
+                                    <img src="{{ project.image.url }}" alt="{{ project.image_alt }}" title="{{ project.image_title }}">
+                                </picture>
+                                <a href="{% url 'catalog:project-details' slug=project.slug %}" class="more">
+                                    <picture>
+                                        <img src="{% static 'img/more_1.svg' %}" alt="">
+                                    </picture>
+                                </a>
+                                <div class="card_text">
+                                    <span>{{ project.date }}</span>
+                                    <a href="{% url 'catalog:project-details' slug=project.slug %}">{{ project.title }}</a>
+                                    <p>{{ project.announcement }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% if request.LANGUAGE_CODE == 'ru' %}
+                        <p class="text-center d-flex flex-column fs-4">
+                            <picture>
+                                <img src="{% static 'img/writing.svg' %}" alt="">
+                            </picture><br>
+                            Сейчас мы собираем интересную информацию о реализованных нами проектах!
+                        </p>
+                        <p class="text-center">Пожалуйста, зайдите позже ...</p>
+                    {% elif request.LANGUAGE_CODE == 'en' %}
+                        <p class="text-center d-flex flex-column fs-4">
+                            <picture>
+                                <img src="{% static 'img/writing.svg' %}" alt="">
+                            </picture><br>
+                            Now we are collecting interesting information about the projects we have implemented!
+                        </p>
+                        <p class="text-center">Please come back later ...</p>
+                    {% else %}
+                        <p class="text-center d-flex flex-column fs-4">
+                            <picture>
+                                <img src="{% static 'img/writing.svg' %}" alt="">
+                            </picture><br>
+                            Қазір біз жүзеге асырған жобалар туралы қызықты ақпарат жинаймыз!
+                        </p>
+                        <p class="text-center">Кейінірек тоқтаңыз ...</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

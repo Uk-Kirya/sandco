@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'about_product' %} — Sandco.kz
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'about_product' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li><a href="{% url 'catalog:company' %}">{% trans 'company'  %}</a> /</li>
+                            <li>{% trans 'about_product' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="company_tabs">
+                            <li><a href="{% url 'catalog:origins' %}">{% trans 'origins' %}</a></li>
+                            <li class="active"><a href="{{ request.path }}">{% trans 'about_product' %}</a></li>
+                            <li><a href="{% url 'catalog:projects' %}">{% trans 'projects' %}</a></li>
+                            <li><a href="{% url 'catalog:team' %}">{% trans 'team' %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row about_product_block_1">
+                    <div class="col-lg-6 mb-4">
+                        {% if request.LANGUAGE_CODE == 'ru' %}
+                            <h2>Фракционированный кварцпесок</h2>
+                            <span class="text_1">от SandCo</span>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                            <h2>Graded high-silica sand</h2>
+                            <span class="text_1">by SandCo</span>
+                        {% else %}
+                            <h2>Фракцияланған кварц құмы</h2>
+                            <span class="text_1">SandCo ұсынатын</span>
+                        {% endif %}
+                    </div>
+                    {% for item in structure %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="about_product_block_1_1">
+                                <picture>
+                                    <img src="{{ item.icon.url }}" alt="{{ item.icon_alt }}" title="{{ item.icon_title }}">
+                                </picture>
+                                <p><strong>{{ item.title }}</strong></p>
+                                <p>{{ item.text }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% if products %}
+            <div class="container-fluid about_product_block_2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2>{% trans 'types_of_sand' %}</h2>
+                        </div>
+                        {% for product in products %}
+                            <div class="col-md-6 col-lg-3">
+                                <div class="product_card">
+                                    <a href="{% url 'catalog:product-details' slug=product.slug %}">
+                                        <div class="ratio ratio-16x9">
+                                            <div>
+                                                <picture>
+                                                    <img src="{{ product.image.url }}" alt="{{ product.image_alt }}" title="{{ product.image_title }}">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div>
+                                        <a href="{% url 'catalog:product-details' slug=product.slug %}">{{ product.title }}</a>
+                                        <p>{{ product.type }}</p>
+                                        <button onclick="window.location.href = '{% url 'catalog:product-details' slug=product.slug %}';">подробнее</button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="container about_product_block_3">
+            <div class="row">
+                <div class="col-12">
+                    <h2>{% trans 'how_to_made_sand' %}</h2>
+                </div>
+                <div class="col-12">
+                    {% for step in steps %}
+                        <div class="step_block">
+                            <div class="row align-items-center">
+                                <div class="col-1">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="col-10 offset-1 offset-lg-1 col-lg-4">
+                                    <div class="ratio ratio-16x9">
+                                        <div>
+                                            <picture>
+                                                <img src="{{ step.image.url }}" alt="{{ step.image_alt }}" title="{{ step.image_title }}">
+                                            </picture>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-10 col-lg-5 offset-2 offset-lg-1">
+                                    <p>{{ step.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="about_product_block_3_1">
+                        <div>
+                            <picture>
+                                <img src="{% static 'img/info.svg' %}" alt="{{ keywords }} - {{ description }}">
+                            </picture>
+                        </div>
+                        <div>
+                            {% if request.LANGUAGE_CODE == 'ru' %}
+                                <p>Процесс не оказывает вредных воздействий на окружающую среду, так как технология производства обогащенного
+                                песка с помощью магнитной сепарации, отвечающая европейским стандартам, и использование печей сушки,
+                                работающих на электричестве, не приводит к выбросу загрязняющих веществ в атмосферу.</p>
+                            {% elif request.LANGUAGE_CODE == 'en' %}
+                                <p>The production process is environmentally friendly, utilizing magnetic separation technology that meets European standards, alongside electric-powered drying ovens that produce no harmful emissions into the atmosphere.</p>
+                            {% else %}
+                                <p>Бұл үрдіс қоршаған ортаға ешқандай зиян әкелмейді. Себебі еуропалық стандарттарға сәйкес келетін магниттік сепарация арқылы байытылған құмды өндіру технологиясы мен электр кептіру пештерін пайдалану ластаушы заттардың атмосфераға таралудың алдын алады.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Заявка успешно отправлена — Sandco.kz
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Заявка успешно отправлена</h1>
+                        <ul>
+                            <li><a href="/">Главная</a> /</li>
+                            <li>Заявка успешно отправлена</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center d-flex flex-column fs-4">
+                        <picture>
+                            <img src="{% static 'img/send.svg' %}" alt="">
+                        </picture><br>
+                        Заявка успешно отправлена!
+                    </p>
+                    <p class="text-center">Мы ответим Вам в ближайшее время<br><br><br>
+                    <a href="/" class="application m-0">Вернуться на главную</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

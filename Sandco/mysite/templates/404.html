@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'not_found_title' %} — Sandco.kz
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'not_found_title' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li>{% trans 'not_found_title' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="">
+            </picture>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col text-center">
+                    <h3 style="font-size: 10rem;">404</h3>
+                    <h2>{% trans 'not_found_title_2' %}</h2>
+                    <p class="mb-5">{% trans 'not_found_text' %}</p>
+                    <a href="{% url 'catalog:home' %}" class="application">{% trans 'go_home' %}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

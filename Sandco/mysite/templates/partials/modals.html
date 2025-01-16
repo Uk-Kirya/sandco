@@ -1,0 +1,176 @@
+{% load static %}
+{% load i18n %}
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="menu">
+    <div class="offcanvas-body">
+        <picture data-bs-dismiss="offcanvas" class="close">
+            <img src="{% static 'img/close.svg' %}" alt="" width="10" height="10">
+        </picture>
+        <div class="row">
+            <div class="col">
+                <button class="d-flex m-4 d-md-none catalog {% if request.path == '/library/' %} active_catalog {% endif %}" onclick="window.location.href = '{% url 'catalog:library' %}';">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.75 4.7478L18.25 4.75255M8.75 10L18.25 10.0047M8.75 15.25H18.25M1.75 4.7478L4.25 4.74948M1.75 10L4.25 10.0017M1.75 15.25H4.25"
+                            stroke="#131313" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    {% trans 'library' %}
+                </button>
+                <ul>
+                    <li>
+                        <a href="{% url 'catalog:company' %}" {% if request.path == '/company/' %} class="active" {% endif %}>{% trans 'company' %}</a>
+                        <ul>
+                            <li>
+                                <a href="{% url 'catalog:origins' %}" {% if request.path == '/company/origins/' %} class="active" {% endif %}>
+                                    {% trans 'origins' %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'catalog:about-product' %}" {% if request.path == '/company/about-product/' %} class="active" {% endif %}>
+                                    {% trans 'about_product' %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'catalog:projects' %}" {% if request.path == '/company/projects/' %} class="active" {% endif %}>
+                                    {% trans 'projects' %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'catalog:team' %}" {% if request.path == '/company/team/' %} class="active" {% endif %}>
+                                    {% trans 'team' %}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{% url 'catalog:blog' %}" {% if request.path == '/blog/' %} class="active" {% endif %}>
+                            {% trans 'news' %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'catalog:contacts' %}" {% if request.path == '/contacts/' %} class="active" {% endif %}>
+                            {% trans 'contacts' %}
+                        </a>
+                    </li>
+                </ul>
+                <div class="social_block mt-3">
+                    <a href="https://facebook.com/sandco.kz/" target="_blank">
+                        <picture>
+                            <img src="{% static 'img/fb_white.svg' %}" alt="">
+                        </picture>
+                    </a>
+                    <a href="https://youtube.com/@sandco_kz/" target="_blank">
+                        <picture>
+                            <img src="{% static 'img/you_white.svg' %}" alt="">
+                        </picture>
+                    </a>
+                    <a href="https://www.instagram.com/sandco.kz/" target="_blank">
+                        <picture>
+                            <img src="{% static 'img/inst_white.svg' %}" alt="">
+                        </picture>
+                    </a>
+                    <a href="https://www.linkedin.com/company/sandco-kz/" target="_blank">
+                        <picture>
+                            <img src="{% static 'img/linkedin_white.svg' %}" alt="">
+                        </picture>
+                    </a>
+                    <a href="https://x.com/sandco_kz" target="_blank">
+                        <picture>
+                            <img src="{% static 'img/x_white.svg' %}" alt="">
+                        </picture>
+                    </a>
+                </div>
+                <div class="dropdown">
+                    <button class="language w-100" id="dropdownMenuButton2" data-bs-toggle="dropdown">
+                        {{ request.LANGUAGE_CODE|title }}
+                        <picture>
+                            <img src="{% static 'img/arrow_down.svg' %}" alt="">
+                        </picture>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                        <li><a class="dropdown-item" href="{% url 'set_language' %}?language=ru&next=/ru{{ path_without_lang }}">Ру</a></li>
+                        <li><a class="dropdown-item" href="{% url 'set_language' %}?language=ru&next=/en{{ path_without_lang }}">En</a></li>
+                        <li><a class="dropdown-item" href="{% url 'set_language' %}?language=ru&next=/kz{{ path_without_lang }}">Кз</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="application" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{% trans 'modal_title_1' %}</h3>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'catalog:application' %}" method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        <input type="text" name="name" class="form-control" id="floatingName" placeholder="{% trans 'name' %}" required>
+                        <label for="floatingName">{% trans 'name' %}</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="phone" class="phonee form-control" id="floatingPhone" placeholder="{% trans 'phone' %}" required>
+                        <label for="floatingPhone">{% trans 'phone' %}</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" name="email" class="form-control" id="floatingEmail" placeholder="{% trans 'your_email' %}">
+                        <label for="floatingEmail">{% trans 'your_email' %}</label>
+                    </div>
+                    <div class="mb-3">
+                        <div class="g-recaptcha" data-sitekey="6Lf4Aw0qAAAAAF6AfYQuGPC7b2CpaF-oFLuJO-by"></div>
+                    </div>
+                    <button class="application" type="submit">
+                        {% trans 'send' %}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="application_2" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{% trans 'modal_title_2' %}</h3>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'catalog:application' %}" method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        <input type="text" name="name" class="form-control" id="floatingName_2" placeholder="{% trans 'name' %}" required>
+                        <label for="floatingName_2">{% trans 'name' %}</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="phone" class="phonee form-control" id="floatingPhone_2" placeholder="{% trans 'phone' %}" required>
+                        <label for="floatingPhone_2">{% trans 'phone' %}</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" name="email" class="form-control" id="floatingEmail_2" placeholder="{% trans 'your_email' %}">
+                        <label for="floatingEmail_2">{% trans 'your_email' %}</label>
+                    </div>
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="category">
+                            <option selected disabled>{% trans 'napr' %}</option>
+                            {% for category in categories %}
+                                <option value="{{ category.title }}">{{ category.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="floatingSelect">{% trans 'napr' %}</label>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <div class="g-recaptcha" data-sitekey="6Lf4Aw0qAAAAAF6AfYQuGPC7b2CpaF-oFLuJO-by"></div>
+                    </div>
+                    <button class="application" type="submit">
+                        {% trans 'send' %}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {{ new.title }} — Sandco.kz
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ new.keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ new.description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{{ new.title }}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li><a href="{% url 'catalog:blog' %}">{% trans 'news' %}</a> /</li>
+                            <li>{{ new.title }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ new.keywords }} - {{ new.description }}" title="{{ new.keywords }} - {{ new.description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="container mb-5">
+                <div class="row">
+                    <div class="col-lg-6 project_photos">
+                        <script src="https://yastatic.net/share2/share.js"></script>
+                        <div class="ya-share2" data-curtain data-size="l" data-shape="round" data-limit="0"
+                            data-more-button-type="short"
+                            data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,whatsapp,moimir"></div>
+                        <div class="ratio ratio-16x9">
+                            <div>
+                                <picture>
+                                    <img src="{{ new.image.url }}" alt="{{ new.image_alt }}" title="{{ new.image_title }}">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 project_text new_inner_text">
+                        <span class="project_date">{% trans 'date_of_publiactions' %}: {{ new.date }}</span>
+                        {{ new.text|safe }}
+                    </div>
+                </div>
+            </div>
+            {% if news.count > 1 %}
+                <div class="container block_4 mb-5">
+                    <hr class="line_1">
+                    <div class="row">
+                        <div class="col-12 text-center text-sm-start">
+                            <h2>{% trans 'read_also' %}</h2>
+                        </div>
+                        <div class="col-12 mt-5 mt-sm-0">
+                            <div class="owl-carousel owl-theme carousel_1">
+                                {% for item in news %}
+                                    {% if item.slug != new.slug %}
+                                        <div class="item">
+                                            <div class="card_1">
+                                                <picture>
+                                                    <img src="{{ item.image.url }}" alt="{{ item.image_alt }}" title="{{ item.image_title }}">
+                                                </picture>
+                                                <a href="{% url 'catalog:blog-details' slug=item.slug %}" class="more">
+                                                    <picture>
+                                                        <img src="{% static 'img/more_1.svg' %}" alt="">
+                                                    </picture>
+                                                </a>
+                                                <div class="card_text">
+                                                    <span>{{ item.date }}</span>
+                                                    <a href="{% url 'catalog:blog-details' slug=item.slug %}">{{ item.title }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'origins' %} — Sandco.kz — {{ keywords }} — {{ description }}
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'origins' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li><a href="{% url 'catalog:company' %}">{% trans 'company' %}</a> /</li>
+                            <li>{% trans 'origins' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ keywords }} — {{ description }}" title="{{ keywords }} — {{ description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="company_tabs">
+                            <li class="active"><a href="{{ request.path }}">{% trans 'origins' %}</a></li>
+                            <li><a href="{% url 'catalog:about-product' %}">{% trans 'about_product' %}</a></li>
+                            <li><a href="{% url 'catalog:projects' %}">{% trans 'projects' %}</a></li>
+                            <li><a href="{% url 'catalog:team' %}">{% trans 'team' %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0 about_inner_picture">
+                        <picture>
+                            <img src="{% static 'img/origins.webp' %}" alt="">
+                        </picture>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1 about_inner_text">
+                        {% if request.LANGUAGE_CODE == 'ru' %}
+                            <p>Сакен Каримбекович Жуманалин по запросу эпохи обнаруживает возможность использования отечественного песка вместо импортного и создает компанию «Намыс» на базе месторождения «Карьерное» Тайыншинского района Северо-Казахстанской области. Сначала компания развивает строительное направление, а в дальнейшем раскрывает весь потенциал добываемого сырья.</p>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                            <p>Saken Zhumanalin recognized an opportunity to replace imported sand with locally sourced materials, leading him to establish Namys at the Kariernoe sand quarry in the Taiynsha district of North Kazakhstan. While the company initially focused on construction, it soon tapped into the full potential of its raw material resources.</p>
+                        {% else %}
+                            <p>Сәкен Кәрімбекұлы Жұманалин заман талабына сай құмды шетелден әкелмей-ақ, отандық өнім шығаруға болады деген оймен Солтүстік Қазақстан облысы, Тайынша ауданындағы Кариерное кен орны негізінде «Намыс» компаниясының негізін қалайды. Алғашқыда компания құрылыс саласында жұмыс істейді, содан кейін шикізат өндіру саласында дамып, бар әлеуетін іске асырады. </p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="owl-carousel owl-theme years">
+                            {% for year in history %}
+                                <div class="item">
+                                    <div class="year">
+                                        {{ year.year }}
+                                    </div>
+                                    <hr>
+                                    <div class="circle"></div>
+                                    <p>{{ year.announcement }}</p>
+                                    {% if year.text %}
+                                        <button data-bs-toggle="modal" data-bs-target="#year_{{ year.id }}">{% trans 'more' %}</button>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid plans">
+            <div class="container">
+                {% if request.LANGUAGE_CODE == 'ru' %}
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <h2>Планы на 2025 год</h2>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul>
+                                <li>Совершенствование производственных сил (покупка автоматической линии упаковки, совершенствование моечного процесса)</li>
+                                <li>Расширение производства</li>
+                            </ul>
+                        </div>
+                    </div>
+                {% elif request.LANGUAGE_CODE == 'en' %}
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <h2>Future plans for 2025</h2>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul>
+                                <li>Enhancing production capabilities with the acquisition of an automatic packaging line and improvements to the washing process.</li>
+                                <li>Further expanding production operations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <h2>2025 жылға жоспарлар</h2>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul>
+                                <li>Өндірістік күштерді жетілдіру (автоматты орау желісін сатып алу, жуу процесін жетілдіру)</li>
+                                <li>Өндірісті кеңейту</li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="plans_links">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 mb-4 mb-lg-0">
+                                    <a href="{% url 'catalog:team' %}">
+                                        <div class="plans_link">
+                                            <picture class="more">
+                                                <img src="{% static 'img/more_1.svg' %}" alt="">
+                                            </picture>
+                                            <div>
+                                                {% trans 'team' %}
+                                            </div>
+                                            <picture class="p_l">
+                                                <img src="{% static 'img/team_bg_2.webp' %}" alt="">
+                                            </picture>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-4 mb-4 mb-lg-0">
+                                    <a href="{% url 'catalog:about-product' %}">
+                                        <div class="plans_link">
+                                            <picture class="more">
+                                                <img src="{% static 'img/more_1.svg' %}" alt="">
+                                            </picture>
+                                            <div>
+                                                {% trans 'about_product' %}
+                                            </div>
+                                            <picture class="p_l">
+                                                <img src="{% static 'img/about_product_bg_2.webp' %}" alt="">
+                                            </picture>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-4 mb-4 mb-lg-0">
+                                    <a href="{% url 'catalog:projects' %}">
+                                        <div class="plans_link">
+                                            <picture class="more">
+                                                <img src="{% static 'img/more_1.svg' %}" alt="">
+                                            </picture>
+                                            <div>
+                                                {% trans 'projects' %}
+                                            </div>
+                                            <picture class="p_l">
+                                                <img src="{% static 'img/projects_bg_2.webp' %}" alt="">
+                                            </picture>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {% for year in history %}
+        <div class="modal fade" id="year_{{ year.id }}" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">{{ year.year }}</h2>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        {{ year.text|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'company' %} — Sandco.kz — {{ description }} — {{ keywords }}
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header inner_header_white">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'company' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li>{% trans 'company' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_about">
+            <div class="row company_categories">
+                <div class="col-md-6 mb-4">
+                    <a href="{% url 'catalog:origins' %}">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <div>
+                                    {% trans 'origins' %}
+                                </div>
+                                <picture>
+                                    <img src="{% static 'img/origins_bg.webp' %}" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <a href="{% url 'catalog:about-product' %}">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <div>
+                                    {% trans 'about_product' %}
+                                </div>
+                                <picture>
+                                    <img src="{% static 'img/about_product_bg.webp' %}" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <a href="{% url 'catalog:projects' %}">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <div>
+                                    {% trans 'projects' %}
+                                </div>
+                                <picture>
+                                    <img src="{% static 'img/projects_bg.webp' %}" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <a href="{% url 'catalog:team' %}">
+                        <div class="ratio ratio-4x3">
+                            <div>
+                                <div>
+                                    {% trans 'team' %}
+                                </div>
+                                <picture>
+                                    <img src="{% static 'img/team_bg.webp' %}" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

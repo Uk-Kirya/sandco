@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'library' %} — Sandco.kz
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ category.keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ category.description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'library' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> /</li>
+                            <li><a href="{% url 'catalog:library' %}">{% trans 'library' %}</a> /</li>
+                            <li>{{ category.title }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ category.description }}" title="{{ category.description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_block_2 inner_block_2_2">
+            <div class="container block_6">
+                <div class="row">
+                    {% for advantage in advantages %}
+                        <div class="col-6 col-lg-3">
+                            <div>
+                                <picture>
+                                    <img src="{{ advantage.image.url }}" alt="{{ advantage.image_alt }}" title="{{ advantage.image_title }}">
+                                </picture>
+                            </div>
+                            <div>
+                                <p>{{ advantage.text }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid inner_block_3">
+            <div class="container category_inner">
+                <div class="row">
+                    <div class="col-lg-6 category_inner_image">
+                        <picture>
+                            <img src="{{ category.image.url }}" alt="{{ category.image_alt }}" title="{{ category.image_title }}">
+                        </picture>
+                    </div>
+                    <div class="col-lg-6 mt-2 mt-lg-0">
+                        <h3>{{ category.title }}</h3>
+                        {{ category.text|safe }}
+                        {% if products %}
+                            <h3>{% trans 'recommend_types' %}</h3>
+                            <div class="row">
+                                {% for item in products %}
+                                    <div class="col-md-6">
+                                        <div class="product_card">
+                                            <a href="{% url 'catalog:product-details' slug=item.slug %}">
+                                                <div class="ratio ratio-16x9">
+                                                    <div>
+                                                        <picture>
+                                                            <img src="{{ item.image.url }}" alt="{{ item.image_alt }}"  title="{{ item.image_title }}">
+                                                        </picture>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <div>
+                                                <a href="{% url 'catalog:product-details' slug=item.slug %}">{{ item.title }}</a>
+                                                <p>{{ item.type }}</p>
+                                                <button onclick="window.location.href = '{% url 'catalog:product-details' slug=item.slug %}';">
+                                                    {% trans 'more' %}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if projects %}
+                <div class="container block_4">
+                    <hr class="line_1">
+                    <div class="row">
+                        <div class="col-12 text-center text-sm-start">
+                            {% if request.LANGUAGE_CODE == 'ru' %}
+                                <h2><span>Проекты с</span> «{{ category.title }}»</h2>
+                            {% elif request.LANGUAGE_CODE == 'en' %}
+                                <h2><span>Projects with</span> «{{ category.title }}»</h2>
+                            {% else %}
+                                <h2><span>Жобалар</span> «{{ category.title }}»</h2>
+                            {% endif %}
+                        </div>
+                        <div class="col-12 mt-5 mt-sm-0">
+                            <div class="owl-carousel owl-theme carousel_1">
+                                {% for project in projects %}
+                                    <div class="item">
+                                        <div class="card_1">
+                                            <picture>
+                                                <img src="{{ project.image.url }}" alt="">
+                                            </picture>
+                                            <a href="{% url 'catalog:project-details' slug=project.slug %}" class="more">
+                                                <picture>
+                                                    <img src="{% static 'img/more_1.svg' %}" alt="{{ project.image_alt }}" title="{{ project.image_title }}">
+                                                </picture>
+                                            </a>
+                                            <div class="card_text">
+                                                <span>{{ project.date }}</span>
+                                                <a href="{% url 'catalog:project-details' slug=project.slug %}">{{ project.title }}</a>
+                                                <p>{{ project.announcement }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if categories.count > 1 %}
+                <div class="container block_4 pt-1">
+                    <hr class="line_1">
+                    <div class="row">
+                        <div class="col-12 text-center text-sm-start">
+                            <h2>{% trans 'see_also' %}</h2>
+                        </div>
+                        <div class="col-12 mt-5 mt-sm-0">
+                            <div class="owl-carousel owl-theme carousel_3">
+                                {% for item in categories %}
+                                    {% if item.slug != category.slug %}
+                                        <div class="item">
+                                            <div class="card_2">
+                                                <a href="{% url 'catalog:library-details' slug=item.slug %}">
+                                                    <picture>
+                                                        <img src="{{ item.image.url }}" alt="{{ item.image_alt }}" title="{{ item.image_title }}">
+                                                    </picture>
+                                                </a>
+                                                <a href="{% url 'catalog:library-details' slug=item.slug %}" class="more">
+                                                    <picture>
+                                                        <img src="{% static 'img/more_2.svg' %}" alt="">
+                                                    </picture>
+                                                </a>
+                                                <div class="card_text">
+                                                    <a href="{% url 'catalog:library-details' slug=item.slug %}">{{ item.title }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

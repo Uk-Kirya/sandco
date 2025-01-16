@@ -1,0 +1,178 @@
+{% load static %}
+{% load i18n %}
+
+<footer class="mt-auto">
+    <div class="container-fluid block_8">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="row align-items-center">
+                        <div class="col-12 text-center">
+                            <h2>{% trans 'form_zag_1' %}</h2>
+                            {% if request.LANGUAGE_CODE != 'kz' %}
+                                <h3>{% trans 'form_zag_2' %}</h3>
+                            {% endif %}
+                            <p>{% trans 'form_zag_3' %}</p>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <form action="{% url 'catalog:application' %}" method="post" class="needs-validation" novalidate>
+                                {% csrf_token %}
+                                <div class="row align-items-end">
+                                    <div class="col-sm-6 col-lg-4">
+                                        <input type="text" name="name" placeholder="{% trans 'name' %} *" class="form-control" required>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <input type="text" name="phone" placeholder="{% trans 'phone' %} *" class="phonee form-control" required>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <input type="email" name="email" placeholder="{% trans 'your_email' %}" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <label for="category_select" class="ms-3 mt-3">{% trans 'napr' %}</label>
+                                        <select name="category" class="form-control" id="category_select">
+                                            {% for category in categories %}
+                                                <option value="{{ category.title }}">{{ category.title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <input type="text" name="value" placeholder="{% trans 'value' %}" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <input type="text" name="package" placeholder="{% trans 'package' %}" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <input type="text" name="deadlines" placeholder="{% trans 'deadlines' %}" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <input type="submit" value="{% trans 'send' %}" class="send">
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="g-recaptcha" data-sitekey="6Lf4Aw0qAAAAAF6AfYQuGPC7b2CpaF-oFLuJO-by"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="f_1">
+                        <a href="{% url 'catalog:home' %}" aria-label="{% trans 'Главная' %}">
+                            <picture>
+                                <img src="{% static 'img/logo_footer.svg' %}" alt="">
+                            </picture>
+                        </a>
+                        <div class="social_block mt-3">
+                            <a href="https://facebook.com/sandco.kz/" target="_blank" aria-label="Facebook">
+                                <picture>
+                                    <img src="{% static 'img/fb.svg' %}" alt="">
+                                </picture>
+                            </a>
+                            <a href="https://youtube.com/@sandco_kz/" target="_blank" aria-label="YouTube">
+                                <picture>
+                                    <img src="{% static 'img/you.svg' %}" alt="">
+                                </picture>
+                            </a>
+                            <a href="https://www.instagram.com/sandco.kz/" target="_blank" aria-label="Instagram">
+                                <picture>
+                                    <img src="{% static 'img/inst.svg' %}" alt="">
+                                </picture>
+                            </a>
+                            <a href="https://www.linkedin.com/company/sandco-kz/" target="_blank" aria-label="Linkedin">
+                                <picture>
+                                    <img src="{% static 'img/linkedin.svg' %}" alt="">
+                                </picture>
+                            </a>
+                            <a href="https://x.com/sandco_kz" target="_blank" aria-label="X">
+                                <picture>
+                                    <img src="{% static 'img/x.svg' %}" alt="">
+                                </picture>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="f_1">
+                        <ul>
+                            <li {% if request.path == '/library/' %} class="active" {% endif %}>
+                                <a href="{% url 'catalog:library' %}" aria-label="{% trans 'library' %}">{% trans 'library' %}</a>
+                            </li>
+                            <li {% if request.path == '/company/' %} class="active" {% endif %}>
+                                <a href="{% url 'catalog:company' %}" aria-label="{% trans 'company' %}">{% trans 'company' %}</a>
+                            </li>
+                            <li {% if request.path == '/blog/' %} class="active" {% endif %}>
+                                <a href="{% url 'catalog:blog' %}" aria-label="{% trans 'news' %}">{% trans 'news' %}</a>
+                            </li>
+                            <li {% if request.path == '/contacts/' %} class="active" {% endif %}>
+                                <a href="{% url 'catalog:contacts' %}" aria-label="{% trans 'contacts' %}">{% trans 'contacts' %}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="f_1">
+                        <div class="f_1_1">
+                            <div>
+                                <picture>
+                                    <img src="{% static 'img/phone.svg' %}" alt="">
+                                </picture>
+                            </div>
+                            <div>
+                                <span>{% trans 'sales_deportament' %}</span>
+                                <a href="tel:+77003718141" aria-label="Телефон Отдел продаж">+7 (700) 371-81-41</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f_1">
+                        <div class="f_1_1">
+                            <div>
+                                <picture>
+                                    <img src="{% static 'img/location.svg' %}" alt="">
+                                </picture>
+                            </div>
+                            <div>
+                                <span>{% trans 'location' %}</span>
+                                <p>{% trans 'location_text' %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f_1">
+                        <div class="f_1_1">
+                            <div>
+                                <picture>
+                                    <img src="{% static 'img/email.svg' %}" alt="">
+                                </picture>
+                            </div>
+                            <div>
+                                <span>{% trans 'email' %}</span>
+                                <a href="mailto:sand@sandco.kz" aria-label="Наша почта">sand@sandco.kz</a>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href = '{% url 'catalog:library' %}';">
+                            <picture>
+                                <img src="{% static 'img/book.svg' %}" alt="">
+                            </picture>
+                            {% trans 'go_to_catalog' %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row cpy">
+                <hr>
+                <div class="col-lg-4 text-center text-lg-start">
+                    © {% now "Y" %} Sandco
+                </div>
+                <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                    <a href="{% url 'catalog:policy' %}" {% if request.path == '/policy/' %} class="active" {% endif %} aria-label="{% trans 'policy' %}">
+                        {% trans 'policy' %}
+                    </a>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                    <a href="https://losdesign.ru" target="_blank" aria-label="{% trans 'development' %}">{% trans 'development' %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

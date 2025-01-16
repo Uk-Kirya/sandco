@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'library' %} — Sandco.kz — {{ description }} — {{ keywords }}
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ keywords }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ description }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid inner_header">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>{% trans 'library' %}</h1>
+                        <ul>
+                            <li><a href="{% url 'catalog:home' %}">{% trans 'home' %}</a> / </li>
+                            <li>{% trans 'library' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <picture>
+                <img src="{% static 'img/slide.webp' %}" alt="{{ keywords }} - {{ description }}" title="{{ keywords }} - {{ description }}">
+            </picture>
+        </div>
+        <div class="container-fluid inner_block_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>{% trans 'the_main_direction' %}</h2>
+                    </div>
+                    {% if categories %}
+                        {% for category in categories %}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card_2">
+                                    <a href="{% url 'catalog:library-details' slug=category.slug %}">
+                                        <picture>
+                                            <img src="{{ category.image.url }}" alt="{{ category.image_alt }}" title="{{ category.image_title }}">
+                                        </picture>
+                                    </a>
+                                    <a href="{% url 'catalog:library-details' slug=category.slug %}" class="more">
+                                        <picture>
+                                            <img src="{% static 'img/more_2.svg' %}" alt="">
+                                        </picture>
+                                    </a>
+                                    <div class="card_text">
+                                        <a href="{% url 'catalog:library-details' slug=category.slug %}">{{ category.title }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% if request.LANGUAGE_CODE == 'ru' %}
+                            <p class="mt-4">Упс... Категории отсутствуют</p>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                            <p class="mt-4">Oops... There are no categories</p>
+                        {% else %}
+                            <p class="mt-4">Ой... Санаттар жоқ</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid inner_block_3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>{% trans 'types_of_sand' %}</h2>
+                    </div>
+                    {% if products %}
+                        {% for product in products %}
+                            <div class="col-md-6 col-lg-3">
+                                <div class="product_card">
+                                    <a href="{% url 'catalog:product-details' slug=product.slug %}">
+                                        <div class="ratio ratio-16x9">
+                                            <div>
+                                                <picture>
+                                                    <img src="{{ product.image.url }}" alt="{{ product.image_alt }}" title="{{ product.image_title }}">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div>
+                                        <a href="{% url 'catalog:product-details' slug=product.slug %}">{{ product.title }}</a>
+                                        <p>{{ product.type }}</p>
+                                        <button onclick="window.location.href = '{% url 'catalog:product-details' slug=product.slug %}';">{% trans 'more' %}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% if request.LANGUAGE_CODE == 'ru' %}
+                            <p class="mt-4">Упс... Товары отсутствуют</p>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                            <p class="mt-4">Oops... There are no products available</p>
+                        {% else %}
+                            <p class="mt-4">Ой... Тауарлар жоқ</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
