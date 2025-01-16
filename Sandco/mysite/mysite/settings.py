@@ -25,7 +25,7 @@ SITE_ID = 1
 SECRET_KEY = 'django-insecure-pgcmob0y)x_-&&6mdjj*^)cq2t%x@0iic^$!1s+j^a0y=#sf54'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['sandco.kz', '185.129.49.142', '127.0.0.1', 'localhost', 'sandco.lc', 'www.sandco.kz']
 
