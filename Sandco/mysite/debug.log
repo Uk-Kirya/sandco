@@ -3084,3 +3084,4 @@ File /Users/kirilllossev/Sandco/mysite/templates/home.html previous mtime: 17370
 "GET /static/js/google-recaptcha.js HTTP/1.1" 200 1434
 "GET /static/img/down.svg HTTP/1.1" 200 548
 "GET /static/fav.png HTTP/1.1" 200 1583
+Not Found: /favicon.ico
